@@ -1,0 +1,121 @@
+.contact-us {
+    padding-bottom: 75px;
+    padding-top: 40px;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        opacity: .5;
+    }
+
+    &-title {
+        position: relative;
+        z-index: 15;
+        overflow: hidden;
+
+        h3 {
+            padding-top: 40px;
+            padding-bottom: 25px;
+            transform: translateY(100%);
+            animation: apparitionTitle 1s cubic-bezier(.17, .67, .11, .88) forwards;
+            text-align: center;
+            color: rgb(4, 4, 40);
+            font-variant-caps: small-caps;
+            font-weight: 500;
+            font-size: 22px;
+        }
+    }
+
+    form {
+        position: relative;
+        z-index: 15;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+
+        .input-contact,
+        button {
+            width: 555px;
+            outline: none;
+            box-shadow: none;
+        }
+
+        .input-contact {
+            border: 1px solid #eef2f6;
+            background: #f6f8fa;
+            color: #555;
+            padding: 8px;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button.little-size-button {
+            display: none;
+        }
+
+        .informations-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            .input-contact, button {
+                height: 60px;
+            }
+
+            button {
+                width: 100%;
+                height: 60px;
+                background: rgb(4, 4, 40);
+                border: none;
+                color: goldenrod;
+                font-size: 18px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media all and (max-width: 1200px) {
+    .contact-us form .input-contact, .contact-us form button {
+        width: 455px;
+    }
+}
+
+@media all and (max-width: 990px) {
+    .contact-form {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 15px !important;
+
+        .input-contact, button {
+            width: calc(100vw - 30px) !important;
+            max-width: 720px !important;
+        }
+
+        .little-size-button {
+            display: inline-block !important;
+            height: 60px;
+            background: rgb(4, 4, 40);
+            border: none;
+            color: rgb(4, 4, 40);
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:not(.little-size-button) {
+            display: none;
+        }
+
+        textarea {
+            height: 175px;
+        }
+    }
+}

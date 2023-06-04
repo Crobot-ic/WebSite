@@ -2,8 +2,9 @@ import { useState } from "react"
 import Loader from "../General/Loader"
 import informations from "../../../informations.json";
 import Modal from "../General/Modal";
+import '../../styles/css/index.css';
 
-const Contact = async () => {
+const Contact = () => {
     const [loading, setLoading] = useState(false);
     const [content, setContent] = useState("");
     const [email, setEmail] = useState("");
@@ -102,15 +103,6 @@ const Contact = async () => {
         >
             <p>{ informationModal }</p>
         </Modal>}
-        {/* <Modal
-            :titleModal="titleInformation"
-            :nameButton="'Fermer'"
-            @createAction="closeAlert"
-            @closeModal="closeAlert"
-            v-if="showInfo"
-        >
-            <p>{{ information }}</p>
-        </Modal> */}
     </section>
     )
 }
