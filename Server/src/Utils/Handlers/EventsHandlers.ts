@@ -1,15 +1,14 @@
 import { Client } from "discord.js";
-import { glob } from "glob";
-import { promisify } from "util";
+import { readdirSync } from "fs";
+import chalk from "chalk";
 
-const pGlob = promisify(glob);
-
-export default async (client: Client) => {
-    const allEvents = (await pGlob(`${process.cwd()}/src/events/**.ts`, {})) as Array<string>;
-    allEvents.map(async (eventFile: string) => {
-        const event = require(eventFile);
+export default async (client: Client) => {   
+    const allEventsPath = process.cwd() + "/src/events";
+    const allEventsFileName = readdirSync(allEventsPath);
+    allEventsFileName.map((eventFile: string) => {
+        const event = require(allEventsPath + "/" + eventFile);
         
-        console.log("Événement chargé : " + event.name);
+        console.log(chalk.green("Événement chargé : " + event.name));
         
         if(event.once) client.once(event.name, (...args: any) => event.execute(client, ...args));
         else client.on(event.name, (...args: any) => event.execute(client, ...args));

@@ -1,18 +1,18 @@
-import { promisify } from "util";
-import { glob } from "glob";
-
-const pGlob = promisify(glob);
+import { readdirSync } from "fs";
+import chalk from "chalk";
 
 export default async (client: any) => {   
-    const allCommands = (await pGlob(`${process.cwd()}/src/commands/**.ts`, {})) as Array<string>;
-    allCommands.map(async (cmdFile: string) => {
-        const cmd = require(cmdFile);
+    const allCommandsPath = process.cwd() + "/src/commands";
+    const allCommandsFileName = readdirSync(allCommandsPath);
+    
+    allCommandsFileName.map((commandFile: string) => {
+        const command = require(allCommandsPath + "/" + commandFile);
 
-        if(!cmd.name || !cmd.description) {
-            return console.log("------\nCommande pas chargée : Pas de description ou de nom\n------")
+        if(!command.name || !command.description) {
+            return console.log(chalk.red("------\nCommande pas chargée : Pas de description ou de nom\n------"))
         }
         
-        client.commands.set(cmd.name, cmd);
-        console.log("Commande chargée : ", cmd.name);
-    })   
+        client.commands.set(command.name, command);
+        console.log(chalk.blue("Commande chargée : ", command.name));
+    });
 }
