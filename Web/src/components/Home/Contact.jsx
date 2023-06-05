@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import Loader from "../General/Loader"
 import informations from "../../../informations.json";
 import Modal from "../General/Modal";
@@ -6,28 +6,47 @@ import '../../styles/css/index.css';
 
 const Contact = () => {
     const [loading, setLoading] = useState(false);
-    const [content, setContent] = useState("");
-    const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
-    const [subject, setSubject] = useState("");
     const [informationModal, setInformationModal] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [titleModal, setTitleModal] = useState("");
 
+    const contentRef = useRef();
+    const emailRef = useRef();
+    const nameRef = useRef();
+    const subjectRef = useRef();
+
     const closeAlert = () => setShowModal(false);
 
-    const submitForm = async () => {
+    const resetForm = () => {
+        contentRef.current.value = "";
+        emailRef.current.value = "";
+        nameRef.current.value = "";
+        subjectRef.current.value = "";
+    }
+
+    const submitForm = async (event) => {
+        event.preventDefault();
+
         const requestOptions = {
             method: "POST", 
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ content, email, name, subject })
+            body: JSON.stringify({ 
+                content: contentRef.current.value, 
+                email: emailRef.current.value, 
+                name: nameRef.current.value, 
+                subject: subjectRef.current.value,  
+            })
         };
+        
+        resetForm();
 
         setLoading(true);
-        const res = await fetch(informations.urlApi + "/contact/send", requestOptions);
+        
+        const res = await fetch(informations.urlApi + "/contact/sendMail", requestOptions);
         const data = await res.json();
+        
         setTitleModal(res.ok ? "Succès" : "Erreur");
         setInformationModal(data.information);
         setLoading(false);
@@ -53,7 +72,7 @@ const Contact = () => {
             <textarea 
                 id="mail-content"
                 className="content-message input-contact"
-                onChange={event => setContent(event.target.value)}
+                ref={contentRef}
                 placeholder="Entrez le contenu de votre message"
             ></textarea>
 
@@ -63,7 +82,7 @@ const Contact = () => {
                         type="text"
                         placeholder="Entrez votre nom" 
                         className="input-contact contact-name"
-                        onChange={event => setName(event.target.value)}
+                        ref={nameRef}
                     />
                 </div>
 
@@ -72,7 +91,7 @@ const Contact = () => {
                         type="text" 
                         id="email-contact-form"
                         placeholder="Entrez votre email"
-                        onChange={event => setEmail(event.target.value)} 
+                        ref={emailRef}
                         className="input-contact contact-email"
                     />
                 </div>
@@ -82,7 +101,7 @@ const Contact = () => {
                         type="text"
                         id="object-contact-form"
                         placeholder="Entrez le sujet de votre contact"
-                        onChange={event => setSubject(event.target.value)}
+                        ref={subjectRef}
                         className="input-contact contact-object"
                     />
                 </div>
