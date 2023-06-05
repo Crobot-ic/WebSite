@@ -1,9 +1,9 @@
 [*] - Faire le middleware pour le contrôle des mail 
 [ ] - Faire tous les tests pour le contrôle des mail
 [*] - Finir le ping-pong avec un reply
-[ ] - Faire la commande de création de projet
-[ ] - Faire la commande pour lister tous les projets 
-[ ] - Faire la commande pour supprimer un projet en fonction de son nom / son ID 
+[*] - Faire la commande de création de projet
+[*] - Faire la commande pour lister tous les projets 
+[*] - Faire la commande pour supprimer un projet en fonction de son ID 
 [ ] - Faire la commande pour modifier un projet 
 [ ] - Faire le modèle pour les événements
 [ ] - Faire la commande pour créer un événement
