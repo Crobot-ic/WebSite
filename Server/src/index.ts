@@ -15,7 +15,7 @@ import EventsHandlers from "./Utils/Handlers/EventsHandlers";
 import CommandsHandlers from "./Utils/Handlers/CommandsHandlers";
 
 // Partie DiscordJS
-const client = new Client({ intents: 1 }) as any;
+const client = new Client({ intents: 3276799 }) as any;
 client.commands = new Collection();
 client.login(process.env.BOT_TOKEN);
 
