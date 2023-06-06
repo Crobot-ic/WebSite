@@ -34,6 +34,11 @@ const Project = Connection.define("Project", {
     imageLocalization: {
         type: DataTypes.STRING(100), 
         allowNull: false
+    },
+
+    messageProject: {
+        type: DataTypes.STRING(20),
+        allowNull: false
     }
 }, { timestamps: false });
 

@@ -12,7 +12,6 @@ const Events = Connection.define("Event", {
     eventName: {
         type: DataTypes.STRING(100), 
         allowNull: false, 
-        unique: true,
     },
 
     description: {

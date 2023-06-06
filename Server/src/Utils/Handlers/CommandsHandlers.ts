@@ -13,6 +13,6 @@ export default async (client: any) => {
         }
         
         client.commands.set(command.name, command);
-        console.log(chalk.blue("Commande chargée : ", command.name));
+        console.log(chalk.blue("Commande chargée :", command.name));
     });
 }

@@ -94,7 +94,7 @@ module.exports = {
 
         // Check deadline if is set
         if(deadline) {
-            const dateTs = getDateTsForEvent(deadline);
+            const dateTs = getDateTsForEvent(deadline, "Project");
             if(dateTs == false) { // Not valid date
                 return interaction.reply({
                     content: "La deadline insérée n'est pas valide !\nMerci de rentrer votre deadline sous la forme DD/MM/YYYY !", 
@@ -136,7 +136,8 @@ module.exports = {
                 projectAdvancement: advancement, 
                 projectDescription: description, 
                 deadline, 
-                imageLocalization: "uploads/project/" + projectName + ".png"
+                imageLocalization: "uploads/project/" + projectName + ".png",
+                messageProject: "Jjjjj"
             });
             
             await prompt.delete();
