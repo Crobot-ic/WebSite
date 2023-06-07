@@ -155,7 +155,7 @@ body, #root {
 }
 .header-bar {
   display: flex;
-  padding: 10px 30px;
+  padding: 10px 100px;
   align-items: center;
   justify-content: space-between;
 }
