@@ -1,5 +1,4 @@
 import { Client } from "discord.js";
-import uniqueProjectName from "../Utils/Validators/UniqueProjectName";
 import checkExistenceProjectId from "../Utils/Validators/CheckExistenceProjectId";
 import Project from "../Models/Project";
 import { rmSync } from "fs";
