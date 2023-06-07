@@ -39,6 +39,16 @@ const Project = Connection.define("Project", {
     messageProject: {
         type: DataTypes.STRING(20),
         allowNull: false
+    }, 
+
+    ghRepo: {
+        type: DataTypes.STRING, 
+        validate: { isUrl: true }
+    }, 
+
+    imageDiscordLocalization: {
+        type: DataTypes.STRING, 
+        allowNull: false
     }
 }, { timestamps: false });
 

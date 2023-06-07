@@ -1,10 +1,11 @@
-import { Message, Client, MessageCollector, TextBasedChannel } from "discord.js"
+import { Message, Client, MessageCollector, TextBasedChannel, TextChannel } from "discord.js"
 import uniqueProjectName from "../Utils/Validators/UniqueProjectName";
 import getDateTsForEvent from "../Utils/Discord/GetDateTsForEvent";
 import fetch from "node-fetch";
 import { createWriteStream } from "fs";
 import Project from "../Models/Project";
 import sleepMs from "../Utils/sleep";
+import projectEmbed from "../Utils/Embeds/ProjectEmbed";
 
 module.exports = {
     name: "create_project", 
@@ -34,12 +35,19 @@ module.exports = {
             required: false,
             type: "STRING",
         },
+        {
+            name: "gh_repo", 
+            description: "The Github repository's project", 
+            type: "STRING",
+            required: false
+        }
     ],
     runSlash: async (client: Client, interaction: any) => {        
         const projectName = interaction.options.getString("nom_projet") as string;
         const description = interaction.options.getString("description") as string;
         const advancement = interaction.options.getString("avancement") as string;
         const deadline = interaction.options.getString("deadline") as string;
+        let ghRepo = interaction.options.getString("gh_repo") as string | null;
 
         // Check channel
         if(interaction.channelId != process.env.BOT_CHANNEL) {
@@ -74,6 +82,14 @@ module.exports = {
                 content: "L'avancement doit être un nombre réel compris entre 0 et 5 !",
                 ephemeral: true
             })
+        } else if(ghRepo) {
+            if(ghRepo.trim() == "") ghRepo = null;
+            else if(!ghRepo.startsWith("https://github.com/")) {
+                return interaction.reply({
+                    content: "L'URL du projet GitHub n'est pas correcte !", 
+                    ephemeral: true
+                })
+            }
         }
 
         // Check length for information
@@ -117,8 +133,7 @@ module.exports = {
             if(message.attachments.size == 0) {
                 if(!message.author.bot) message.delete();
                 return;
-            }
-            if(message.attachments.first()?.contentType !== "image/png") {
+            } else if(message.attachments.first()?.contentType !== "image/png") {
                 const response = await message.reply("Le format de l'image n'est pas bon ! Merci de ne rentrer que des images au format PNG !");
                 await sleepMs(2000);
                 response.delete();
@@ -127,8 +142,25 @@ module.exports = {
             }
             messageCollector.stop();
             
-            const data = (await (await fetch(message.attachments.first()?.proxyURL as any)).buffer());
+            const imageDiscordLocalization = message.attachments.first()?.proxyURL as string;
+            
+            // Save the img
+            const data = (await (await fetch(imageDiscordLocalization)).buffer());
             createWriteStream("uploads/project/" + projectName + ".png").write(data);
+
+            // Create the embed
+            const embedInfo = {
+                projectAdvancement: advancement,
+                imageLocalization: imageDiscordLocalization,
+                projectTitle: projectName,
+                deadline, 
+                description
+            }
+            const embeds = [projectEmbed(embedInfo)]; 
+
+            // Send the message for the project
+            const projectChannel = await client.channels.fetch(process.env.PROJECT_CHANNEL as string) as TextChannel;
+            const messageProject = (await projectChannel.send({ embeds })).id;
 
             // Add in the database
             await Project.create({
@@ -136,10 +168,19 @@ module.exports = {
                 projectAdvancement: advancement, 
                 projectDescription: description, 
                 deadline, 
+                ghRepo,
                 imageLocalization: "uploads/project/" + projectName + ".png",
-                messageProject: "Jjjjj"
+                messageProject, 
+                imageDiscordLocalization
             });
-            
+
+            // Send the message for the log
+            const logChannel = await client.channels.fetch(process.env.LOG_BOT_CHANNEL as string) as TextChannel;
+            logChannel.send({
+                content: interaction.user.username + " a créé un nouvel événement !", 
+                embeds
+            })
+
             await prompt.delete();
             await message.delete();
 
