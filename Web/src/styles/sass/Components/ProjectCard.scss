@@ -1,0 +1,66 @@
+.project {
+    margin: 100px;
+    width: 400px;
+    background-color: white;
+
+    &-picture {
+        img {
+            border: 1px solid rgb(4, 4, 40);
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+    }
+
+    &-info {
+        h4 {
+            text-align: center;
+            font-size: 19px;
+            font-weight: 500;
+            font-variant-caps: petite-caps;
+        }
+
+        &-description {
+            margin: auto;
+            width: 350px;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        &-time {
+            display: flex;  
+            width: 350px;
+            margin: auto;
+            padding-bottom: 20px;
+            justify-content: space-between;
+
+            h6 {
+                font-weight: 600;
+                font-size: 17px;
+            }
+
+            &-advancement {
+
+                &-stars {
+                    display: flex; 
+                }   
+            }
+        }
+    }
+
+    &-gh {
+        text-align: center;
+        padding-top: 5px;
+        border-top: 1px solid rgb(4, 4, 40);
+
+        a {
+            color: grey;
+            transition: 0.5s;
+            font-size: 30px;
+
+            &:hover {
+                color: rgb(4, 4, 40);
+            }
+        }
+    }
+}

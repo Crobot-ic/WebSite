@@ -23,7 +23,7 @@ const FooterBar = () => {
                     </a>
 
                     <a href="https://github.com/Crobot-ic" target="_blank">
-                        <i class="fa fa-github"></i>
+                        <i className="fa fa-github"></i>
                     </a>
                 </div>
 

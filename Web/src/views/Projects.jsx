@@ -10,6 +10,7 @@ const Project = () => {
         const getProjects = async () => {
             const res = await fetch(informations.urlApi + "/projects");
             const data = (await res.json());
+            console.log(data);
             setEndedProjects(data.endedProject);
             setStillProject(data.stillProject);
         }

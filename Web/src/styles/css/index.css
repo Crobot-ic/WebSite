@@ -252,5 +252,69 @@ body, #root {
     transform: rotate(360deg);
   }
 }
+.star {
+  width: 20px;
+  height: 20px;
+  background-color: goldenrod;
+  display: flex;
+  justify-content: flex-end;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+.star-empty {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(40, 40, 40);
+}
+
+.project {
+  margin: 100px;
+  width: 400px;
+  background-color: white;
+}
+.project-picture img {
+  border: 1px solid rgb(4, 4, 40);
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.project-info h4 {
+  text-align: center;
+  font-size: 19px;
+  font-weight: 500;
+  font-variant-caps: petite-caps;
+}
+.project-info-description {
+  margin: auto;
+  width: 350px;
+  text-align: center;
+  padding: 20px 0;
+}
+.project-info-time {
+  display: flex;
+  width: 350px;
+  margin: auto;
+  padding-bottom: 20px;
+  justify-content: space-between;
+}
+.project-info-time h6 {
+  font-weight: 600;
+  font-size: 17px;
+}
+.project-info-time-advancement-stars {
+  display: flex;
+}
+.project-gh {
+  text-align: center;
+  padding-top: 5px;
+  border-top: 1px solid rgb(4, 4, 40);
+}
+.project-gh a {
+  color: grey;
+  transition: 0.5s;
+  font-size: 30px;
+}
+.project-gh a:hover {
+  color: rgb(4, 4, 40);
+}
 
 /*# sourceMappingURL=index.css.map */
