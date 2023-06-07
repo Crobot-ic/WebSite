@@ -23,6 +23,11 @@ body {
     transform: translate(0);
   }
 }
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .contact-us {
   padding-bottom: 75px;
   padding-top: 40px;
@@ -127,6 +132,49 @@ body {
     height: 175px;
   }
 }
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: rgb(4, 4, 40);
+}
+.header-bar {
+  display: flex;
+  padding: 10px 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-bar-logo-content {
+  width: 50px;
+}
+.header-bar-nav-ul {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+}
+.header-bar-nav-ul-choice {
+  font-size: 17px;
+  font-variant-caps: small-caps;
+  position: relative;
+}
+.header-bar-nav-ul-choice::after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 1px;
+  background-color: black;
+  transform: scale(0);
+  width: 100%;
+  bottom: 0;
+  transition: transform 0.3s ease;
+}
+.header-bar-nav-ul-choice:hover::after {
+  transform: scale(100%);
+}
+.header-bar-nav-ul-choice a {
+  color: goldenrod;
+}
+
 .loader {
   position: fixed;
   top: 0;
