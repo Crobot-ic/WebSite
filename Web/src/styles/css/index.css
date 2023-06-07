@@ -28,6 +28,20 @@ a {
   color: black;
 }
 
+body, #root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
+}
+
 .contact-us {
   padding-bottom: 75px;
   padding-top: 40px;
@@ -53,7 +67,7 @@ a {
   transform: translateY(100%);
   animation: apparitionTitle 1s cubic-bezier(0.17, 0.67, 0.11, 0.88) forwards;
   text-align: center;
-  color: rgb(4, 4, 40);
+  color: rgb(4, 4, 50);
   font-variant-caps: small-caps;
   font-weight: 500;
   font-size: 22px;
@@ -94,7 +108,7 @@ a {
 .contact-us form .informations-contact button {
   width: 100%;
   height: 60px;
-  background: rgb(4, 4, 40);
+  background: rgb(4, 4, 50);
   border: none;
   color: goldenrod;
   font-size: 18px;
@@ -119,7 +133,7 @@ a {
   .contact-form .little-size-button {
     display: inline-block !important;
     height: 60px;
-    background: rgb(4, 4, 40);
+    background: rgb(4, 4, 50);
     border: none;
     color: goldenrod;
     font-size: 18px;
@@ -136,7 +150,7 @@ a {
   position: fixed;
   width: 100%;
   top: 0;
-  background-color: rgb(4, 4, 40);
+  background-color: rgb(4, 4, 50);
 }
 .header-bar {
   display: flex;
@@ -162,7 +176,7 @@ a {
   position: absolute;
   display: block;
   height: 1px;
-  background-color: black;
+  background-color: goldenrod;
   transform: scale(0);
   width: 100%;
   bottom: 0;
@@ -172,7 +186,43 @@ a {
   transform: scale(100%);
 }
 .header-bar-nav-ul-choice a {
+  cursor: pointer;
   color: goldenrod;
+}
+
+.footer {
+  background: rgb(4, 4, 50);
+  padding: 30px 0px;
+  font-family: "Play", sans-serif;
+  text-align: center;
+  width: 100%;
+}
+.footer-bar-row {
+  width: 100%;
+  margin: 15px 0 0 0;
+  padding: 0.6% 0%;
+  color: goldenrod;
+  font-size: 0.8em;
+}
+.footer-bar-row a {
+  text-decoration: none;
+  color: goldenrod;
+  transition: 0.5s;
+  font-size: 16px;
+}
+.footer-bar-row a:hover {
+  color: #fff;
+}
+.footer-bar-row a i {
+  font-size: 2em;
+  margin: 0% 1%;
+}
+.footer-bar-row ul {
+  width: 100%;
+}
+.footer-bar-row ul li {
+  display: inline-block;
+  margin: 0px 30px;
 }
 
 .loader {

@@ -8,14 +8,16 @@ import Project from "./views/Projects.jsx";
 const App = () => {
     return (
         <>
-            <HeaderBar />
-            <main>
-                <Routes>
-                    <Route path="/" element={ <Home /> } />
-                    <Route path="/events" element={ <Events /> } />
-                    <Route path="/projects" element={ <Project /> } />
-                </Routes>
-            </main>
+            <div className="content">
+                <HeaderBar />
+                <main>
+                    <Routes>
+                        <Route path="/" element={ <Home /> } />
+                        <Route path="/events" element={ <Events /> } />
+                        <Route path="/projects" element={ <Project /> } />
+                    </Routes>
+                </main>
+            </div>
             <FooterBar />
         </>
     )
