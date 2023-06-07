@@ -10,10 +10,6 @@ const FooterBar = () => {
                         <i className="fa fa-map-marker"></i>
                     </a>
 
-                    <Link to="/">
-                        <i className="fa fa-globe"></i>
-                    </Link>
-
                     <a href="mailto:crobotic.asso@gmail.com">
                         <i className="fa fa-envelope"></i>
                     </a>

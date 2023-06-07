@@ -1,5 +1,4 @@
 .project {
-    margin: 100px;
     width: 400px;
     background-color: white;
 
@@ -21,10 +20,15 @@
         }
 
         &-description {
-            margin: auto;
+            margin: 20px auto;
             width: 350px;
+            height: 80px;
             text-align: center;
-            padding: 20px 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
         }
 
         &-time {

@@ -20,21 +20,36 @@ const Project = () => {
 
     return (
         <>
-            <h2>Projets finis</h2>
-            {endedProjects?.map((project, index) => (
-                <ProjectCard 
-                    info={project} 
-                    key={index} 
-                />
-            ))}
+            {endedProjects.length != 0 &&
+            <div className="ended-projects projects">
+                <h2 className="projects-title">
+                    Projets finis &nbsp;
+                    <span>({endedProjects.length})</span>
+                </h2>
+                <div className="projects-list">
+                    {endedProjects?.map((project, index) => (
+                        <ProjectCard 
+                            info={project} 
+                            key={index} 
+                        />
+                    ))}
+                </div>
+            </div>}
 
-            <h2>Projets actuels</h2>
-            {stillProject?.map((project, index) => (
-                <ProjectCard 
-                    info={project} 
-                    key={index} 
-                />
-            ))}
+            {stillProject.length != 0 && <div className="projects still-projects">
+                <h2 className="projects-title">
+                    Projets actuels &nbsp;
+                    <span>({stillProject.length})</span>
+                </h2>
+                <div className="projects-list">
+                    {stillProject?.map((project, index) => (
+                        <ProjectCard 
+                            info={project} 
+                            key={index} 
+                        />
+                    ))}
+                </div>
+            </div>}
         </>
     );
 }
