@@ -151,6 +151,7 @@ body, #root {
   width: 100%;
   top: 0;
   background-color: rgb(4, 4, 50);
+  z-index: 1555;
 }
 .header-bar {
   display: flex;
