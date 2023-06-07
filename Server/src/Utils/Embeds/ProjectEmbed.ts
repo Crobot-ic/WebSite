@@ -1,4 +1,4 @@
-import { MessageAttachment, MessageEmbed } from "discord.js";
+import { MessageEmbed } from "discord.js";
 
 const projectEmbed: (info: any) => MessageEmbed = (info: any): MessageEmbed => {
     const deadlineValue = (!info.deadline && info.deadline?.trim() != "") ? "Aucune dealine" : info.deadline;
