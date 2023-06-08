@@ -14,6 +14,8 @@ module.exports = {
                 "**ID du projet :** " + resDb[i].dataValues.projectId + "\n";
         }
 
+        if(message == "") message = "À l'heure actuelle, L'association n'a aucun projet !";
+
         interaction.reply({ content: message, ephemeral: true });
     }
 }
