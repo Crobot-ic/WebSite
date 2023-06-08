@@ -23,15 +23,15 @@ module.exports = {
             attributes: ["projectAdvancement", "imageLocalization", "projectName", "deadline", "projectDescription"]
         }))?.dataValues;
 
-        let imageLocalization = "attachment://" + replaceAll((projectInfo.projectName as string).normalize("NFD"), /[\u0300-\u036f]/g, "") 
-        imageLocalization = replaceAll(imageLocalization, " ", "_") + ".png";
-
         if(!projectInfo) { // Check l'existence du projet
             return interaction.reply({
                 content: "Le projet demandé n'existe pas !", 
                 ephemeral: true
             })
         }
+
+        let imageLocalization = "attachment://" + replaceAll((projectInfo.projectName as string).normalize("NFD"), /[\u0300-\u036f]/g, "") 
+        imageLocalization = replaceAll(imageLocalization, " ", "_") + ".png";
         
         // Create the embed
         const embedInfo = {
