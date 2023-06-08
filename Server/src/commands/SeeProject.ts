@@ -16,7 +16,6 @@ module.exports = {
     ], 
     runSlash: async (client: Client, interaction: any) => {
         const projectId = parseInt(interaction.options.getString("project_id"));
-        console.log(projectId);
         
         const projectInfo = (await Project.findOne({ 
             where: { projectId }, 
