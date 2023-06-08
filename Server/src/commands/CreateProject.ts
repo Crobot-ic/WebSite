@@ -125,7 +125,7 @@ module.exports = {
             }
         }
 
-        await interaction.deferReply();
+        await interaction.deferReply({ ephemeral: true });
         
         // Ask for images
         const prompt = await interaction.channel.send("Les informations saisies sont correctes ! Pour finir la création du projet, rentrer maintenant l'image !");
@@ -163,7 +163,7 @@ module.exports = {
                     deadline, 
                     description
                 }
-                const embeds = [projectEmbed(embedInfo, image)]; 
+                const embeds = [projectEmbed(embedInfo)]; 
 
                 // Send the message for the project
                 const projectChannel = await client.channels.fetch(process.env.PROJECT_CHANNEL as string) as TextChannel;
