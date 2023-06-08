@@ -1,4 +1,4 @@
-import { Client } from "discord.js";
+import { Client, MessageAttachment } from "discord.js";
 import Project from "../Models/Project";
 import projectEmbed from "../Utils/Embeds/ProjectEmbed";
 
@@ -19,7 +19,7 @@ module.exports = {
         
         const projectInfo = (await Project.findOne({ 
             where: { projectId }, 
-            attributes: ["projectAdvancement", "imageDiscordLocalization", "projectName", "deadline", "projectDescription"]
+            attributes: ["projectAdvancement", "imageLocalization", "projectName", "deadline", "projectDescription"]
         }))?.dataValues;
 
         if(!projectInfo) { // Check l'existence du projet
@@ -32,12 +32,13 @@ module.exports = {
         // Create the embed
         const embedInfo = {
             projectAdvancement: projectInfo.projectAdvancement,
-            imageLocalization: projectInfo.imageDiscordLocalization,
+            imageLocalization: projectInfo.imageLocalization,
             projectTitle: projectInfo.projectName,
             deadline: projectInfo.deadline, 
             description: projectInfo.projectDescription
-        }
-        const embeds = [projectEmbed(embedInfo)]; 
+        };
+        const image = new MessageAttachment(projectInfo.imageLocalization);
+        const embeds = [projectEmbed(embedInfo, image)]; 
 
         interaction.reply({
             content: "Voici le projet demandé :", 

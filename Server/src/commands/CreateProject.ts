@@ -1,4 +1,4 @@
-import { Message, Client, MessageCollector, TextBasedChannel, TextChannel } from "discord.js"
+import { Message, Client, MessageCollector, TextBasedChannel, TextChannel, MessageAttachment, MessagePayload } from "discord.js"
 import uniqueProjectName from "../Utils/Validators/UniqueProjectName";
 import getDateTsForEvent from "../Utils/Discord/GetDateTsForEvent";
 import fetch from "node-fetch";
@@ -6,6 +6,7 @@ import { createWriteStream } from "fs";
 import Project from "../Models/Project";
 import sleepMs from "../Utils/sleep";
 import projectEmbed from "../Utils/Embeds/ProjectEmbed";
+import replaceAll from "../Utils/String/replaceAll";
 
 module.exports = {
     name: "create_project", 
@@ -142,49 +143,59 @@ module.exports = {
             }
             messageCollector.stop();
             
-            const imageDiscordLocalization = message.attachments.first()?.proxyURL as string;
-            
             // Save the img
+            const imageDiscordLocalization = message.attachments.first()?.proxyURL as string;
             const data = (await (await fetch(imageDiscordLocalization)).buffer());
-            createWriteStream("uploads/project/" + projectName + ".png").write(data);
+            
+            const stream = createWriteStream("uploads/project/" + projectName + ".png")
+            stream.write(data);
+            stream.on("drain", async () => {
+                const image = new MessageAttachment("uploads/project/" + projectName + ".png");
 
-            // Create the embed
-            const embedInfo = {
-                projectAdvancement: advancement,
-                imageLocalization: imageDiscordLocalization,
-                projectTitle: projectName,
-                deadline, 
-                description
-            }
-            const embeds = [projectEmbed(embedInfo)]; 
+                let imageLocalization = "attachment://" + replaceAll((projectName as string).normalize("NFD"), /[\u0300-\u036f]/g, "") 
+                imageLocalization = replaceAll(imageLocalization, " ", "_") + ".png";
 
-            // Send the message for the project
-            const projectChannel = await client.channels.fetch(process.env.PROJECT_CHANNEL as string) as TextChannel;
-            const messageProject = (await projectChannel.send({ embeds })).id;
+                // Create the embed
+                const embedInfo = {
+                    projectAdvancement: advancement,
+                    imageLocalization,
+                    projectTitle: projectName,
+                    deadline, 
+                    description
+                }
+                const embeds = [projectEmbed(embedInfo, image)]; 
 
-            // Add in the database
-            await Project.create({
-                projectName, 
-                projectAdvancement: advancement, 
-                projectDescription: description, 
-                deadline, 
-                ghRepo,
-                imageLocalization: "uploads/project/" + projectName + ".png",
-                messageProject, 
-                imageDiscordLocalization
-            });
+                // Send the message for the project
+                const projectChannel = await client.channels.fetch(process.env.PROJECT_CHANNEL as string) as TextChannel;
+                const messageProject = (await projectChannel.send({ embeds, files: [image] })).id;
+                
+                // Add in the database
+                await Project.create({
+                    projectName, 
+                    projectAdvancement: advancement, 
+                    projectDescription: description, 
+                    deadline, 
+                    ghRepo,
+                    imageLocalization: "uploads/project/" + projectName + ".png",
+                    messageProject, 
+                });
 
-            // Send the message for the log
-            const logChannel = await client.channels.fetch(process.env.LOG_BOT_CHANNEL as string) as TextChannel;
-            logChannel.send({
-                content: interaction.user.username + " a créé un nouvel événement !", 
-                embeds
+                // Send the message for the log
+                const logChannel = await client.channels.fetch(process.env.LOG_BOT_CHANNEL as string) as TextChannel;
+                logChannel.send({
+                    content: interaction.user.username + " a créé un nouvel événement !", 
+                    embeds, 
+                    files: [image]
+                });
+
+                stream.end();
+
+                await prompt.delete();
+                await message.delete();
+
+                await interaction.editReply("L'événement a bien été ajouté ! ✅");
             })
 
-            await prompt.delete();
-            await message.delete();
-
-            await interaction.editReply("L'événement a bien été ajouté ! ✅");
         });
     }
 }

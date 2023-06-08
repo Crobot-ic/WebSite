@@ -1,4 +1,4 @@
-import { Client } from "discord.js";
+import { Client, TextChannel } from "discord.js";
 import checkExistenceProjectId from "../Utils/Validators/CheckExistenceProjectId";
 import Project from "../Models/Project";
 import { rmSync } from "fs";
@@ -24,18 +24,22 @@ module.exports = {
             })
         }
 
-        if(!await checkExistenceProjectId(projectId)) { // Check l'existence du projet
+        const projectInfo = (await Project.findOne({ // Récupère le nom du projet
+            where: { projectId }, 
+            attributes: ["projectAdvancement", "imageLocalization", "projectName", "deadline", "projectDescription", "messageProject"]
+        }))?.dataValues;
+        const { projectName, projectAdvancement, imageLocalization, deadline, projectDescription, messageProject } = projectInfo;
+
+        if(projectInfo == null) {
             return interaction.reply({
-                content: "Le projet demandé n'existe pas !", 
+                content: "Le projet demandé n'existe pas !",
                 ephemeral: true
             })
         }
 
-        const projectName = (await Project.findOne({ // Récupère le nom du projet
-            where: { projectId }, 
-            attributes: ["projectName"]
-        }))?.dataValues.projectName;
-
+        const message = await (await client.channels.fetch(process.env.PROJECT_CHANNEL as string) as TextChannel).messages.fetch(messageProject as string)
+        console.log(message);
+        await message.delete();
 
         await Project.destroy({ // Supprimer le projet - Base de données
             where: { projectName }
