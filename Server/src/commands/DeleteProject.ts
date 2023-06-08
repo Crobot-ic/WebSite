@@ -1,7 +1,8 @@
-import { Client, TextChannel } from "discord.js";
-import checkExistenceProjectId from "../Utils/Validators/CheckExistenceProjectId";
+import { Client, TextChannel, MessageAttachment } from "discord.js";
 import Project from "../Models/Project";
 import { rmSync } from "fs";
+import replaceAll from "../Utils/String/replaceAll";
+import projectEmbed from "../Utils/Embeds/ProjectEmbed";
 
 module.exports = {
     name: "delete_project", 
@@ -24,7 +25,7 @@ module.exports = {
             })
         }
 
-        const projectInfo = (await Project.findOne({ // Récupère le nom du projet
+        const projectInfo = (await Project.findOne({ // Récupère le projet
             where: { projectId }, 
             attributes: ["projectAdvancement", "imageLocalization", "projectName", "deadline", "projectDescription", "messageProject"]
         }))?.dataValues;
@@ -37,16 +38,40 @@ module.exports = {
             })
         }
 
-        const message = await (await client.channels.fetch(process.env.PROJECT_CHANNEL as string) as TextChannel).messages.fetch(messageProject as string)
-        console.log(message);
+        // Génération de l'Embed
+        let imageAttachmentLocalization = "attachment://" + replaceAll((projectInfo.projectName as string).normalize("NFD"), /[\u0300-\u036f]/g, "") 
+        imageAttachmentLocalization = replaceAll(imageAttachmentLocalization, " ", "_") + ".png";
+        const embedInfo = {
+            projectAdvancement: projectInfo.projectAdvancement,
+            imageLocalization: imageAttachmentLocalization,
+            projectTitle: projectInfo.projectName,
+            deadline: projectInfo.deadline, 
+            description: projectInfo.projectDescription
+        };
+        const image = new MessageAttachment(projectInfo.imageLocalization);
+        const embeds = [projectEmbed(embedInfo)]; 
+
+        // Suppression du message du projet
+        const message = await (await client.channels.fetch(process.env.PROJECT_CHANNEL as string) as TextChannel).messages.fetch(messageProject as string);
         await message.delete();
 
-        await Project.destroy({ // Supprimer le projet - Base de données
-            where: { projectName }
+        // Supprimer le projet - Base de données
+        await Project.destroy({ where: { projectName } })
+
+        // Envoie de l'Embed
+        const logChannel = await client.channels.fetch(process.env.LOG_BOT_CHANNEL as string) as TextChannel;
+        await logChannel.send({
+            content: interaction.user.username + " a supprimé le projet " + projectName,
+            embeds, 
+            files: [image]
         })
 
-        rmSync(process.cwd() + "/uploads/project/" + projectName + ".png"); // Supprimer le projet - Image
+        // Supprimer le projet - Image
+        rmSync(process.cwd() + "/uploads/project/" + projectName + ".png"); 
 
-        interaction.reply("Le projet " + projectName + " a  bien été supprimé !");
+        interaction.reply({
+            content: "Le projet " + projectName + " a  bien été supprimé !", 
+            ephemeral: true
+        });
     }
 }
