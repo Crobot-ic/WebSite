@@ -247,6 +247,25 @@ body, #root {
   margin: 0px 30px;
 }
 
+.main-page {
+  height: 100vh;
+  background-image: url("../../assets/ArrivalImage.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.main-page::after {
+  position: absolute;
+  content: "";
+  background-color: #573103;
+  opacity: 0.3;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 .loader {
   position: fixed;
   top: 0;
