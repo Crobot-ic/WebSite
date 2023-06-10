@@ -4,8 +4,8 @@ const generateDurationFromTs: (ts: number) => string = (ts: number): string => {
     const numberHours = Math.floor((ts % dayTs) / hourTs);
     const numberMinutes = Math.floor((ts % hourTs) / minuteTs);
 
-    if(numberDays == 0) return numberHours + ":" + numberMinutes.toString().padStart(2, "0");
-    else return numberDays + "j, " + numberHours + ":" + numberMinutes.toString().padStart(2, "0");
+    if(numberDays == 0) return numberHours.toString().padStart(2, "0") + ":" + numberMinutes.toString().padStart(2, "0");
+    else return numberDays + "j, " + numberHours.toString().padStart(2, "0") + ":" + numberMinutes.toString().padStart(2, "0");
 }
 
 export default generateDurationFromTs;
