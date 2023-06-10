@@ -6,7 +6,6 @@ const createEventEmbed: (info: any) => MessageEmbed = (info: any): MessageEmbed 
     const embed = new MessageEmbed();
     
     const eventDate = generateDateFromTs(info.eventDate);
-    console.log(info.eventDate);
     const eventDuration = generateDurationFromTs(info.eventDuration);
     
     embed.setTitle(info.eventName as string);
