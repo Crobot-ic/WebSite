@@ -1,7 +1,8 @@
-import { Client } from "discord.js";
+import { Client, TextBasedChannel } from "discord.js";
 import getDateTsForEvent from "../Utils/Discord/GetDateTsForEvent";
 import getDurationOfEvents from "../Utils/Discord/GetDurationOfEvents";
-import createEventEmbed from "../Utils/Discord/CreateEventEmbed";
+import createEventEmbed from "../Utils/Embeds/CreateEventEmbed";
+import Events from "../Models/Events";
 
 module.exports = {
     name: "create_event", 
@@ -32,12 +33,11 @@ module.exports = {
             type: "STRING"
         },
     ],
-    runSlash: (client: Client, interaction: any) => {
+    runSlash: async (client: Client, interaction: any) => {
         const eventName = interaction.options.getString("event_name") as string;
         const description = interaction.options.getString("description") as string;
         const eventDate = interaction.options.getString("event_date") as string;
         const eventDuration = interaction.options.getString("event_duration") as string;
-        console.log({ eventName, description, eventDate, eventDuration });
         
         // Check le salon
         if(interaction.channelId != process.env.BOT_CHANNEL) { 
@@ -82,7 +82,7 @@ module.exports = {
         const dateTs = getDateTsForEvent(eventDate, "Event");
         if(dateTs == false) { // Not valid date
             return interaction.reply({
-                content: "La date insérée n'est pas valide !\nMerci de rentrer votre deadline sous la forme DD/MM/YYYY !", 
+                content: "La date insérée n'est pas valide !\nMerci de rentrer votre deadline sous la forme DD/MM/YYYY HH:MM!", 
                 ephemeral: true
             })
         } else if (dateTs < Date.now()) { // Deadline before date
@@ -94,14 +94,22 @@ module.exports = {
 
         // Check event duration
         const durationTs = getDurationOfEvents(eventDuration);
-        if(durationTs === false) {
+        if(durationTs === false || durationTs === 0) {
             return interaction.reply({
                 content: "La durée saisie n'est pas correcte ! Merci de saisir une durée valide au format DD:HH:MM", 
                 ephemeral: true
             })
         }
 
-        // Créer l'embed
+        // Ajouter l'event en BDD
+        await Events.create({
+            eventName, 
+            description, 
+            duration: durationTs, 
+            startDate: dateTs
+        });
+
+        // Créer et envoyer l'embed
         const eventInfos = {
             eventDuration: durationTs, 
             eventName, 
@@ -110,9 +118,21 @@ module.exports = {
         }
         const embeds = [createEventEmbed(eventInfos)];
 
-        // Envoie le message
-        interaction.channel.send({ embeds })
+        const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL as string) as TextBasedChannel;
+        eventChannel.send({
+            // content: "Hello @everyone, \nUn nouvel événement a été programmé !", 
+            embeds
+        })  
 
-        interaction.reply("We are working on that !");
+        const logChannel = await client.channels.fetch(process.env.LOG_BOT_CHANNEL as string) as TextBasedChannel;
+        logChannel.send({
+            // content: interaction.user.username + " a créé un nouvel événement !", 
+            embeds
+        })
+
+        interaction.reply({
+            content: "L'événement a bien été créé ! ✅",
+            ephemeral: true 
+        });
     }   
 }
