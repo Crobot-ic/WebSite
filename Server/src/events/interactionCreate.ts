@@ -11,32 +11,23 @@ module.exports = {
         }
 
         if(interaction.isAutocomplete()) {
-            interaction.respond([
-                {
-                    name: "Nom du projet", 
-                    value: "projectName"
-                }, 
-                {
-                    name: "Avancement du projet", 
-                    value: "projectAdvancement", 
-                }, 
-                {
-                    name: "Description du projet",
-                    value: "projectDescription"
-                }, 
-                {
-                    name: "Image du projet",
-                    value: "projectImage"
-                },
-                {
-                    name: "Deadline du projet",
-                    value: "projectDeadline"
-                }, 
-                {
-                    name: "GitHub",
-                    value: "projectGh"
-                }
-            ])
+            if(interaction.commandName === "update_project") {
+                interaction.respond([
+                    { name: "Nom du projet", value: "projectName" }, 
+                    { name: "Avancement du projet", value: "projectAdvancement" }, 
+                    { name: "Description du projet", value: "projectDescription" }, 
+                    { name: "Image du projet", value: "projectImage" },
+                    { name: "Deadline du projet", value: "projectDeadline" }, 
+                    { name: "GitHub", value: "projectGh" }
+                ])
+            } else {
+                interaction.respond([
+                    { name: "Durée de l'événement", value: "duration" }, 
+                    { name: "Date de l'événeemnt", value: "eventDate" }, 
+                    { name: "Nom de l'événement", value: "eventName" }, 
+                    { name: "Description", value: "description" }
+                ])
+            }
         }
 
         const devGuild: Guild = await client.guilds.cache.get(process.env.SERV_ID);
