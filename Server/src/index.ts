@@ -1,5 +1,7 @@
 import * as dotenv from "dotenv";
 dotenv.config();
+console.log(process.env.MODE);
+
 
 import express from "express";
 import cors, { CorsOptions } from "cors";
