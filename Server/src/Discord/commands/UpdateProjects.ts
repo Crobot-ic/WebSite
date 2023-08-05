@@ -1,12 +1,12 @@
 import { Client, MessageAttachment, MessageCollector, TextBasedChannel, TextChannel } from "discord.js";
-import sleepMs from "../Utils/sleep";
+import sleepMs from "../../Utils/sleep";
 import fetch from "node-fetch";
 import { createWriteStream, renameSync } from "fs";
-import Project from "../Models/Project";
-import replaceAll from "../Utils/String/replaceAll";
-import projectEmbed from "../Utils/Embeds/ProjectEmbed";
-import uniqueProjectName from "../Utils/Validators/UniqueProjectName";
-import getDateTsForEvent from "../Utils/Discord/GetDateTsForEvent";
+import Project from "../../Models/Project";
+import replaceAll from "../../Utils/String/replaceAll";
+import projectEmbed from "../../Utils/Embeds/ProjectEmbed";
+import uniqueProjectName from "../../Utils/Validators/UniqueProjectName";
+import getDateTsForEvent from "../../Utils/Discord/GetDateTsForEvent";
 
 module.exports = {
     name: "update_project", 

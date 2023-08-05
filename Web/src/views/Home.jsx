@@ -13,8 +13,9 @@ const Home = () => {
     return (
         <>
             <MainPage />  
-            {/* <Services /> */}
-{/*             
+            
+            <Services />             
+            
             <GoTo actionButton={() => goToPage("/events")} title="Nos événements" buttonName = "Voir nos événements">
                 <p>Notre association possède des événements en tous genres : cohésions, séances, formations...</p>
             </GoTo>  
@@ -22,9 +23,8 @@ const Home = () => {
             <GoTo actionButton={() => goToPage("/projects")} title="Nos projets" buttonName = "Voir nos projets">
                 <p>Notre association est basée sur la réalisation de projets ! Nous en réalisons tout le temps et nous orientons vers !</p>
             </GoTo>  
-
-            <Partnership />          
-            <Contact /> */}
+  
+            <Contact />
         </>
     );
 }

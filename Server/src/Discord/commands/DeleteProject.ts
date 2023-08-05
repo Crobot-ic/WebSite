@@ -1,8 +1,8 @@
 import { Client, TextChannel, MessageAttachment } from "discord.js";
-import Project from "../Models/Project";
+import Project from "../../Models/Project";
 import { rmSync } from "fs";
-import replaceAll from "../Utils/String/replaceAll";
-import projectEmbed from "../Utils/Embeds/ProjectEmbed";
+import replaceAll from "../../Utils/String/replaceAll";
+import projectEmbed from "../../Utils/Embeds/ProjectEmbed";
 
 module.exports = {
     name: "delete_project", 

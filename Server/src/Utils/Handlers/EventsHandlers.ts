@@ -3,7 +3,7 @@ import { readdirSync } from "fs";
 import chalk from "chalk";
 
 export default async (client: Client) => {   
-    const allEventsPath = process.cwd() + "/src/events";
+    const allEventsPath = process.cwd() + "/src/Discord/events";
     const allEventsFileName = readdirSync(allEventsPath);
     allEventsFileName.map((eventFile: string) => {
         const event = require(allEventsPath + "/" + eventFile);

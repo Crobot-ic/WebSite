@@ -42,25 +42,25 @@ body, #root {
   flex-shrink: 0;
 }
 
-.projects {
-  margin: 100px 100px 40px 100px;
+.projects-section {
+  margin-top: 100px;
 }
-.projects-title {
+.projects-section .projects {
+  margin: 0px 100px 40px 100px;
+}
+.projects-section .projects-title {
   font-variant-caps: small-caps;
   padding-bottom: 10px;
 }
-.projects-title span {
+.projects-section .projects-title span {
   font-size: 12px;
 }
-.projects-list {
+.projects-section .projects-list {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
   align-items: center;
-}
-.projects.still-projects {
-  margin-top: 0px;
 }
 
 .contact-us {

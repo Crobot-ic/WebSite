@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import checkMail from "../../Utils/Validators/CheckMail";
+import checkMail from "../../../Utils/Validators/CheckMail";
 
 const checkMailInformations = (req: Request, res: Response, next: NextFunction) => {
     // Vérifie que toutes les informations soient remplies

@@ -1,6 +1,6 @@
 import { Client } from "discord.js";
-import Events from "../Models/Events";
-import generateDateFromTs from "../Utils/generateDateFromTs";
+import Events from "../../Models/Events";
+import generateDateFromTs from "../../Utils/generateDateFromTs";
 
 module.exports = {
     name: "all_events", 
@@ -8,24 +8,30 @@ module.exports = {
     runSlash: async (client: Client, interaction: any) => {
         const incomingEvents = await Events.findAll({ 
             attributes: ["eventName", "startDate", "eventId"] 
-        });
-        const message = {
+        }), message = {
             pastEvents: "Voici la liste des événements passés :\n\n",
-            incomingEvents: "Voici la liste des événements à venir\n\n",
-        };
-        const now = Date.now();
+            incomingEvents: "Voici la liste des événements à venir :\n\n",
+        }, now = Date.now();
 
         for(let i = 0; i < incomingEvents.length; i++) {
             const { eventName, startDate, eventId } = incomingEvents[i].dataValues;
             const eventDate = generateDateFromTs(startDate as number);
             const addToMessage =
-            "**Nom de l'événement :** " + eventName + "\n" + 
-            "**Date de l'événement :** " + eventDate + "\n" +
-            "**ID de l'événement :** " + eventId + "\n\n" + 
-            "--------------------------------------------------------------------------------\n\n"; 
+                "**Nom de l'événement :** " + eventName + "\n" + 
+                "**Date de l'événement :** " + eventDate + "\n" +
+                "**ID de l'événement :** " + eventId + "\n\n" + 
+                "--------------------------------------------------------------------------------\n\n"; 
 
             if(now < startDate) message.incomingEvents += addToMessage;
             else message.pastEvents += addToMessage;
+        }
+
+        if(message.incomingEvents === "Voici la liste des événements à venir :\n\n") {
+            message.incomingEvents = "Il n'y a aucun événement à venir !\n\n";
+        } 
+        
+        if(message.pastEvents === "Voici la liste des événements passés :\n\n") {
+            message.pastEvents = "Il n'y a aucun événement passé !";        
         }
 
         const finalMessage = message.incomingEvents + message.pastEvents;

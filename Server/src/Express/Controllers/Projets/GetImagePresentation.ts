@@ -1,4 +1,4 @@
-import Project from "../../Models/Project";
+import Project from "../../../Models/Project";
 import { Request, Response } from "express";
 
 const getImageProject = async (req: Request, res: Response) => {

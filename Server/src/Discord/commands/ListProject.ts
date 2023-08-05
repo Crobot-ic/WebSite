@@ -1,5 +1,5 @@
 import { Client } from "discord.js";
-import Project from "../Models/Project";
+import Project from "../../Models/Project";
 
 module.exports = {
     name: "list_project", 
@@ -14,7 +14,7 @@ module.exports = {
                 "**ID du projet :** " + resDb[i].dataValues.projectId + "\n";
         }
 
-        if(message == "") message = "À l'heure actuelle, L'association n'a aucun projet !";
+        if(message == "") message = "À l'heure actuelle, l'association n'a aucun projet !";
 
         interaction.reply({ content: message, ephemeral: true });
     }

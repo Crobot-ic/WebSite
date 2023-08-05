@@ -1,7 +1,7 @@
 import { Client } from "discord.js";
-import Events from "../Models/Events";
+import Events from "../../Models/Events";
 import { Op } from "sequelize";
-import generateDateFromTs from "../Utils/generateDateFromTs";
+import generateDateFromTs from "../../Utils/generateDateFromTs";
 
 module.exports = {
     name: "incoming_event",     
@@ -11,6 +11,13 @@ module.exports = {
             where: { startDate: { [Op.gt]: Date.now() } }, 
             attributes: ["eventName", "startDate", "eventId"]
         });
+
+        if(incomingEvents.length === 0) {
+            return interaction.reply({
+                content: "Il n'y a aucun événement à venir !", 
+                ephemeral: true
+            })
+        }
 
         let message = "Voici la liste des événements à venir :\n\n";
 

@@ -2,7 +2,7 @@ import { readdirSync } from "fs";
 import chalk from "chalk";
 
 export default async (client: any) => {   
-    const allCommandsPath = process.cwd() + "/src/commands";
+    const allCommandsPath = process.cwd() + "/src/Discord/commands";
     const allCommandsFileName = readdirSync(allCommandsPath);
     
     allCommandsFileName.map((commandFile: string) => {

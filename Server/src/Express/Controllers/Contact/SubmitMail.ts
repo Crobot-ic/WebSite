@@ -1,7 +1,7 @@
-import Mail from "../../Models/Mail";
-import transporter from "../../Services/MailTransporter";
-import embedContact from "../../Utils/Discord/EmbedContact";
-import createMailOptions from "../../Utils/Contact/CreateMailOptions";
+import Mail from "../../../Models/Mail";
+import transporter from "../../../Services/MailTransporter";
+import embedContact from "../../../Utils/Discord/EmbedContact";
+import createMailOptions from "../../../Utils/Contact/CreateMailOptions";
 
 const sendMail = async (req: any, res: any) => {
     // Send the embed

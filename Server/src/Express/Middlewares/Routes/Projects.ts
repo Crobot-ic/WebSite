@@ -1,6 +1,6 @@
 import { Router } from "express";
-import GetProjects from "../Controllers/Projets/GetProjects";
-import getImageProject from "../Controllers/Projets/GetImagePresentation";
+import GetProjects from "../../Controllers/Projets/GetProjects";
+import getImageProject from "../../Controllers/Projets/GetImagePresentation";
 
 const projectsRoutes = Router();
 

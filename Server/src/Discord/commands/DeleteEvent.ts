@@ -1,6 +1,6 @@
 import { Client, TextBasedChannel } from "discord.js";
-import Events from "../Models/Events";
-import createEventEmbed from "../Utils/Embeds/CreateEventEmbed";
+import Events from "../../Models/Events";
+import createEventEmbed from "../../Utils/Embeds/CreateEventEmbed";
 
 module.exports = {
     name: "delete_event", 

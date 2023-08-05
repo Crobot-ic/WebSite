@@ -1,24 +1,24 @@
-.projects {
-    margin: 100px 100px 40px 100px;
+.projects-section {
+    margin-top: 100px;
 
-    &-title {
-        font-variant-caps: small-caps;
-        padding-bottom: 10px;
-        
-        span {
-            font-size: 12px;
+    .projects {
+        margin: 0px 100px 40px 100px;
+    
+        &-title {
+            font-variant-caps: small-caps;
+            padding-bottom: 10px;
+            
+            span {
+                font-size: 12px;
+            }
         }
-    }
-
-    &-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 30px;
-        justify-content: center;
-        align-items: center;
-    }
-
-    &.still-projects {
-        margin-top: 0px;
+    
+        &-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+        }
     }
 }

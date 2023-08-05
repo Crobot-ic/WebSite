@@ -1,7 +1,7 @@
 import { Client, MessageAttachment } from "discord.js";
-import Project from "../Models/Project";
-import projectEmbed from "../Utils/Embeds/ProjectEmbed";
-import replaceAll from "../Utils/String/replaceAll";
+import Project from "../../Models/Project";
+import projectEmbed from "../../Utils/Embeds/ProjectEmbed";
+import replaceAll from "../../Utils/String/replaceAll";
 
 module.exports = {
     name: "see_project", 

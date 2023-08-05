@@ -1,8 +1,8 @@
 import { Client, TextBasedChannel } from "discord.js";
-import Events from "../Models/Events";
-import getDurationOfEvents from "../Utils/Discord/GetDurationOfEvents";
-import getDateTsForEvent from "../Utils/Discord/GetDateTsForEvent";
-import createEventEmbed from "../Utils/Embeds/CreateEventEmbed";
+import Events from "../../Models/Events";
+import getDurationOfEvents from "../../Utils/Discord/GetDurationOfEvents";
+import getDateTsForEvent from "../../Utils/Discord/GetDateTsForEvent";
+import createEventEmbed from "../../Utils/Embeds/CreateEventEmbed";
 
 module.exports = {
     name: "update_event", 
