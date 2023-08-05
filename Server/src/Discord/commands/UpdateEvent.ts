@@ -3,6 +3,7 @@ import Events from "../../Models/Events";
 import getDurationOfEvents from "../../Utils/Discord/GetDurationOfEvents";
 import getDateTsForEvent from "../../Utils/Discord/GetDateTsForEvent";
 import createEventEmbed from "../../Utils/Embeds/CreateEventEmbed";
+import channelsInformations from "../../../ChannelsConfig.json";
 
 module.exports = {
     name: "update_event", 
@@ -29,8 +30,16 @@ module.exports = {
         }
     ], 
     runSlash: async (client: Client, interaction: any) => {
+        if(process.env.MODE != "prod" && process.env.MODE != "dev") {
+            return interaction.reply({ 
+                content: "Wooops, something went wrong !", 
+                ephemeral: true
+            }); 
+        }
+        const runMode = process.env.MODE;
+
         // Check : Channel
-        if(interaction.channelId != process.env.BOT_CHANNEL) {
+        if(interaction.channelId != channelsInformations[runMode].BOT_CHANNEL) {
             return interaction.reply({
                 content: "Vous ne pouvez pas utiliser cette commande dans ce salon !",
                 ephemeral: true 
@@ -139,14 +148,14 @@ module.exports = {
         }, embeds = [createEventEmbed(eventInfos)];
 
         // Send Embed in the LOG_BOT_CHANNEL
-        const logChannel = await client.channels.fetch(process.env.LOG_BOT_CHANNEL as string) as TextBasedChannel;
+        const logChannel = await client.channels.fetch(channelsInformations[runMode].LOG_BOT_CHANNEL) as TextBasedChannel;
         logChannel.send({
             content: interaction.user.username + " a modifié un événement !", 
             embeds
         });
 
         // Create and send update Event message
-        const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL as string) as TextBasedChannel;
+        const eventChannel = await client.channels.fetch(channelsInformations[runMode].EVENT_CHANNEL) as TextBasedChannel;
         eventChannel.send({
             // content: "Hello @everyone, \nUn événement a été modifié ! Voici le nouvel événement :", 
             embeds

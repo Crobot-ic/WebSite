@@ -7,6 +7,7 @@ import Project from "../../Models/Project";
 import sleepMs from "../../Utils/sleep";
 import projectEmbed from "../../Utils/Embeds/ProjectEmbed";
 import replaceAll from "../../Utils/String/replaceAll";
+import channelsInformations from "../../../ChannelsConfig.json";
 
 module.exports = {
     name: "create_project", 
@@ -50,8 +51,16 @@ module.exports = {
         const deadline = interaction.options.getString("deadline") as string;
         let ghRepo = interaction.options.getString("gh_repo") as string | null;
 
+        if(process.env.MODE != "prod" && process.env.MODE != "dev") {
+            return interaction.reply({ 
+                content: "Wooops, something went wrong !", 
+                ephemeral: true
+            }); 
+        }
+        const runMode = process.env.MODE;
+        
         // Check channel
-        if(interaction.channelId != process.env.BOT_CHANNEL) {
+        if(interaction.channelId != channelsInformations[runMode].BOT_CHANNEL) {
             return interaction.reply({
                 content: "Vous ne pouvez pas utiliser cette commande dans ce salon !",
                 ephemeral: true 
@@ -147,7 +156,7 @@ module.exports = {
             const imageDiscordLocalization = message.attachments.first()?.proxyURL as string;
             const data = (await (await fetch(imageDiscordLocalization)).buffer());
             
-            const stream = createWriteStream("uploads/project/" + projectName + ".png")
+            const stream = createWriteStream(process.cwd() + "/uploads/project/" + projectName + ".png")
             stream.write(data);
             stream.on("drain", async () => {
                 const image = new MessageAttachment("uploads/project/" + projectName + ".png");
@@ -166,7 +175,7 @@ module.exports = {
                 const embeds = [projectEmbed(embedInfo)]; 
 
                 // Send the message for the project
-                const projectChannel = await client.channels.fetch(process.env.PROJECT_CHANNEL as string) as TextChannel;
+                const projectChannel = await client.channels.fetch(channelsInformations[runMode].PROJECT_CHANNEL) as TextChannel;
                 const messageProject = (await projectChannel.send({ embeds, files: [image] })).id;
                 
                 // Add in the database
@@ -181,7 +190,7 @@ module.exports = {
                 });
 
                 // Send the message for the log
-                const logChannel = await client.channels.fetch(process.env.LOG_BOT_CHANNEL as string) as TextChannel;
+                const logChannel = await client.channels.fetch(channelsInformations[runMode].LOG_BOT_CHANNEL) as TextChannel;
                 logChannel.send({
                     content: interaction.user.username + " a créé un nouvel événement !", 
                     embeds, 

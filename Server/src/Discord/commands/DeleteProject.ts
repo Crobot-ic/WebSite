@@ -3,6 +3,7 @@ import Project from "../../Models/Project";
 import { rmSync } from "fs";
 import replaceAll from "../../Utils/String/replaceAll";
 import projectEmbed from "../../Utils/Embeds/ProjectEmbed";
+import channelsInformations from "../../../ChannelsConfig.json";
 
 module.exports = {
     name: "delete_project", 
@@ -17,8 +18,16 @@ module.exports = {
     ], 
     runSlash: async (client: Client, interaction: any) => {
         const projectId = parseInt(interaction.options.getString("id_projet"));
+
+        if(process.env.MODE != "prod" && process.env.MODE != "dev") {
+            return interaction.reply({ 
+                content: "Wooops, something went wrong !", 
+                ephemeral: true
+            }); 
+        }
+        const runMode = process.env.MODE;
         
-        if(interaction.channelId != process.env.BOT_CHANNEL) { // Check le salon
+        if(interaction.channelId != channelsInformations[runMode].BOT_CHANNEL) { // Check le salon
             return interaction.reply({
                 content: "Vous ne pouvez pas utiliser cette commande dans ce salon !",
                 ephemeral: true 
@@ -52,14 +61,14 @@ module.exports = {
         const embeds = [projectEmbed(embedInfo)]; 
 
         // Suppression du message du projet
-        const message = await (await client.channels.fetch(process.env.PROJECT_CHANNEL as string) as TextChannel).messages.fetch(messageProject as string);
+        const message = await (await client.channels.fetch(channelsInformations[runMode].PROJECT_CHANNEL) as TextChannel).messages.fetch(messageProject as string);
         await message.delete();
 
         // Supprimer le projet - Base de données
         await Project.destroy({ where: { projectName } })
 
         // Envoie de l'Embed
-        const logChannel = await client.channels.fetch(process.env.LOG_BOT_CHANNEL as string) as TextChannel;
+        const logChannel = await client.channels.fetch(channelsInformations[runMode].LOG_BOT_CHANNEL) as TextChannel;
         await logChannel.send({
             content: interaction.user.username + " a supprimé le projet " + projectName,
             embeds, 

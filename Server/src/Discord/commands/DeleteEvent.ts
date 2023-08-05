@@ -1,6 +1,7 @@
 import { Client, TextBasedChannel } from "discord.js";
 import Events from "../../Models/Events";
 import createEventEmbed from "../../Utils/Embeds/CreateEventEmbed";
+import channelsInformations from "../../../ChannelsConfig.json";
 
 module.exports = {
     name: "delete_event", 
@@ -14,8 +15,16 @@ module.exports = {
         }
     ], 
     runSlash: async (client: Client, interaction: any) => {
+        if(process.env.MODE != "prod" && process.env.MODE != "dev") {
+            return interaction.reply({ 
+                content: "Wooops, something went wrong !", 
+                ephemeral: true
+            }); 
+        }
+        const runMode = process.env.MODE;
+        
         // Check channel
-        if(interaction.channelId != process.env.BOT_CHANNEL) { 
+        if(interaction.channelId != channelsInformations[runMode].BOT_CHANNEL) { 
             return interaction.reply({
                 content: "Vous ne pouvez pas utiliser cette commande dans ce salon !",
                 ephemeral: true 
@@ -58,7 +67,7 @@ module.exports = {
         await Events.destroy({ where: { eventId } });
 
         // Send log with Embed
-        const logChannel = await client.channels.fetch(process.env.LOG_BOT_CHANNEL as string) as TextBasedChannel;
+        const logChannel = await client.channels.fetch(channelsInformations[runMode].LOG_BOT_CHANNEL) as TextBasedChannel;
         logChannel.send({
             content: interaction.user.username + " a supprimé l'événement suivant :", 
             embeds

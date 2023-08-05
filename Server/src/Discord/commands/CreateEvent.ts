@@ -3,6 +3,7 @@ import getDateTsForEvent from "../../Utils/Discord/GetDateTsForEvent";
 import getDurationOfEvents from "../../Utils/Discord/GetDurationOfEvents";
 import createEventEmbed from "../../Utils/Embeds/CreateEventEmbed";
 import Events from "../../Models/Events";
+import channelsInformations from "../../../ChannelsConfig.json";
 
 module.exports = {
     name: "create_event", 
@@ -38,9 +39,17 @@ module.exports = {
         const description = interaction.options.getString("description") as string;
         const eventDate = interaction.options.getString("event_date") as string;
         const eventDuration = interaction.options.getString("event_duration") as string;
+
+        if(process.env.MODE != "prod" && process.env.MODE != "dev") {
+            return interaction.reply({ 
+                content: "Wooops, something went wrong !", 
+                ephemeral: true
+            }); 
+        }
+        const runMode = process.env.MODE;
         
         // Check le salon
-        if(interaction.channelId != process.env.BOT_CHANNEL) { 
+        if(interaction.channelId != channelsInformations[runMode].BOT_CHANNEL) { 
             return interaction.reply({
                 content: "Vous ne pouvez pas utiliser cette commande dans ce salon !",
                 ephemeral: true 
@@ -118,13 +127,13 @@ module.exports = {
         }
         const embeds = [createEventEmbed(eventInfos)];
 
-        const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL as string) as TextBasedChannel;
+        const eventChannel = await client.channels.fetch(channelsInformations[runMode].EVENT_CHANNEL) as TextBasedChannel;
         eventChannel.send({
             // content: "Hello @everyone, \nUn nouvel événement a été programmé !", 
             embeds
         })  
 
-        const logChannel = await client.channels.fetch(process.env.LOG_BOT_CHANNEL as string) as TextBasedChannel;
+        const logChannel = await client.channels.fetch(channelsInformations[runMode].EVENT_CHANNEL) as TextBasedChannel;
         logChannel.send({
             // content: interaction.user.username + " a créé un nouvel événement !", 
             embeds

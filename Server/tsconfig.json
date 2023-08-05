@@ -7,8 +7,8 @@
         "outDir": "build", 
         "strict": true, 
         "noEmitOnError": true,
-        "rootDir": "src",
         "pretty": true,
         "removeComments": true,
+        "resolveJsonModule": true
     }
 }

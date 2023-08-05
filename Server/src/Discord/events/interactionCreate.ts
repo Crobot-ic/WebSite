@@ -1,9 +1,16 @@
 import { Guild, Interaction } from "discord.js";
+import channelsInformations from "../../../ChannelsConfig.json";
 
 module.exports = {
     name: "interactionCreate", 
     once: false, 
     async execute(client: any, interaction: Interaction) {
+        if(process.env.MODE != "prod" && process.env.MODE != "dev") {
+            console.error("Wooops, something went wrong on launching the BOT ! Error : Value invalid for MODE env var !");
+            return;
+        }
+        const runMode = process.env.MODE;
+
         if(interaction.isCommand()) {
             const cmd = client.commands.get(interaction.commandName);
             if(!cmd) return interaction.reply("Cette commande n'existe pas");
@@ -30,7 +37,7 @@ module.exports = {
             }
         }
 
-        const devGuild: Guild = await client.guilds.cache.get(process.env.SERV_ID);
+        const devGuild: Guild = await client.guilds.cache.get(channelsInformations[runMode].SERV_ID);
         devGuild.commands.set(client.commands.map((cmd: any) => cmd))
     }
 }

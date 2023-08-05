@@ -7,6 +7,7 @@ import replaceAll from "../../Utils/String/replaceAll";
 import projectEmbed from "../../Utils/Embeds/ProjectEmbed";
 import uniqueProjectName from "../../Utils/Validators/UniqueProjectName";
 import getDateTsForEvent from "../../Utils/Discord/GetDateTsForEvent";
+import channelsInformations from "../../../ChannelsConfig.json";
 
 module.exports = {
     name: "update_project", 
@@ -38,8 +39,14 @@ module.exports = {
         const newValue = interaction.options.getString("new_value");
         const possibleUpdatedField = ["projectName", "projectAdvancement", "projectDescription", "projectImage", "projectDeadline", "projectGh"];
 
+        if(process.env.MODE != "prod" && process.env.MODE != "dev") {
+            console.error("Wooops, something went wrong on launching the BOT ! Error : Value invalid for MODE env var !");
+            return;
+        }
+        const runMode = process.env.MODE;
+
         // Check : Channel
-        if(interaction.channelId != process.env.BOT_CHANNEL) {
+        if(interaction.channelId != channelsInformations[runMode].BOT_CHANNEL) {
             return interaction.reply({
                 content: "Vous ne pouvez pas utiliser cette commande dans ce salon !",
                 ephemeral: true 
@@ -104,10 +111,10 @@ module.exports = {
                     }
                     const embeds = [projectEmbed(embedInfo)]; 
 
-                    const messageProject = await (await client.channels.fetch(process.env.PROJECT_CHANNEL as string) as TextChannel).messages.fetch(projectInfo.messageProject as string);
+                    const messageProject = await (await client.channels.fetch(channelsInformations[runMode].PROJECT_CHANNEL as string) as TextChannel).messages.fetch(projectInfo.messageProject as string);
                     await messageProject.edit({ embeds, files: [image] });
 
-                    const logChannel = await client.channels.fetch(process.env.LOG_BOT_CHANNEL as string) as TextChannel;
+                    const logChannel = await client.channels.fetch(channelsInformations[runMode].LOG_BOT_CHANNEL as string) as TextChannel;
                     logChannel.send({
                         content: interaction.user.username + " a modifié l'événement " + projectInfo.projectName + " !", 
                         embeds, 
@@ -261,10 +268,10 @@ module.exports = {
             const image = new MessageAttachment(projectInfo.imageLocalization);
             const embeds = [projectEmbed(embedInfo)]; 
 
-            const message = await (await client.channels.fetch(process.env.PROJECT_CHANNEL as string) as TextChannel).messages.fetch(projectInfo.messageProject as string);
+            const message = await (await client.channels.fetch(channelsInformations[runMode].PROJECT_CHANNEL) as TextChannel).messages.fetch(projectInfo.messageProject as string);
             message.edit({ embeds, files: [image] });
 
-            const logChannel = await client.channels.fetch(process.env.LOG_BOT_CHANNEL as string) as TextBasedChannel;
+            const logChannel = await client.channels.fetch(channelsInformations[runMode].LOG_BOT_CHANNEL) as TextBasedChannel;
             logChannel.send({
                 content: interaction.user.username + " a modifié le projet " + projectInfo.projectName, 
                 embeds, 

@@ -2,10 +2,17 @@ import Mail from "../../../Models/Mail";
 import transporter from "../../../Services/MailTransporter";
 import embedContact from "../../../Utils/Discord/EmbedContact";
 import createMailOptions from "../../../Utils/Contact/CreateMailOptions";
+import channelInformations from "../../../../ChannelsConfig.json";
+import { TextBasedChannel } from "discord.js";
 
 const sendMail = async (req: any, res: any) => {
+    if(process.env.MODE != "prod" && process.env.MODE != "dev") {
+        return res.status(500).json({ information: "Wooops, something went wrong !" });
+    }
+    const runMode = process.env.MODE;
+
     // Send the embed
-    const channel = await req.clientDiscord.channels.fetch(process.env.CONTACT_CHANNEL as string) as any;
+    const channel = await req.clientDiscord.channels.fetch(channelInformations[runMode].CONTACT_CHANNEL) as TextBasedChannel;
     const embeds = [embedContact(req.body.subject, req.body.name, req.body.email, req.body.content)];
     channel.send({ embeds });
 
