@@ -1,7 +1,8 @@
+import "../../styles/css/index.css";
 import { useEffect, useState } from "react";
 import informations from "../../../informations.json";
-import "../../styles/css/index.css";
 import Star from "./Star";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ProjectCard = (props) => {
     const [image, setImage] = useState(null);
@@ -55,7 +56,7 @@ const ProjectCard = (props) => {
 
             <div className="project-gh">
                 <a href="https://github.com/Crobot-ic" target="_blank">
-                    <i className="fa fa-github"></i>
+                    <FontAwesomeIcon icon="fa-brands fa-github" />
                 </a>
             </div>
         </article>

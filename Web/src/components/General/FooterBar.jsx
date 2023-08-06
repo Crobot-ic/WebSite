@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../../styles/css/index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FooterBar = () => {
     return (
@@ -7,19 +8,19 @@ const FooterBar = () => {
             <div className="footer-bar">
                 <div className="footer-bar-row">
                     <a href="https://goo.gl/maps/r7GSTLVWPkgUmgV38" target="_blank">
-                        <i className="fa fa-map-marker"></i>
+                        <FontAwesomeIcon icon="fa-solid fa-location-dot" />
                     </a>
 
                     <a href="mailto:crobotic.asso@gmail.com">
-                        <i className="fa fa-envelope"></i>
+                        <FontAwesomeIcon icon="fa-solid fa-envelope" />
                     </a>
 
                     <a href="https://www.instagram.com/efreicrobotic/" target="_blank">
-                        <i className="fa fa-instagram"></i>
+                        <FontAwesomeIcon icon="fa-brands fa-instagram" />
                     </a>
 
                     <a href="https://github.com/Crobot-ic" target="_blank">
-                        <i className="fa fa-github"></i>
+                        <FontAwesomeIcon icon="fa-brands fa-github" />
                     </a>
                 </div>
 
