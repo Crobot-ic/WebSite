@@ -1,0 +1,9 @@
+@mixin button-primary($width, $height) {
+    width: $width;
+    height: $height;
+    background: rgb(4, 4, 50);
+    border: none;
+    color: goldenrod;
+    font-size: 18px;
+    cursor: pointer;
+}

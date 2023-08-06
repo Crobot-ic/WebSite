@@ -266,6 +266,34 @@ body, #root {
   right: 0;
 }
 
+.home-navigation {
+  margin-top: 25px;
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr 1fr;
+}
+.home-navigation-or {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: 20px;
+  padding-left: 20px;
+  color: rgb(4, 4, 50);
+  text-transform: uppercase;
+}
+.home-navigation-sep {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 100px;
+  background-color: rgb(4, 4, 50);
+}
+
 .loader {
   position: fixed;
   top: 0;
@@ -503,6 +531,34 @@ body, #root {
 }
 .project-gh a:hover {
   color: rgb(4, 4, 40);
+}
+
+.home-nav {
+  text-align: center;
+}
+.home-nav-title {
+  font-variant-caps: petite-caps;
+  color: rgb(4, 4, 50);
+  margin-bottom: 10px;
+}
+.home-nav-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  height: 80px;
+  width: 80%;
+  margin: auto;
+}
+.home-nav-button {
+  width: 500px;
+  height: 60px;
+  background: rgb(4, 4, 50);
+  border: none;
+  color: goldenrod;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=index.css.map */

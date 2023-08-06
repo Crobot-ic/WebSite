@@ -1,0 +1,25 @@
+@import "../Utils/CenterAbsol.scss";
+
+.home-navigation {
+    margin-top: 25px;
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 1fr;
+
+    &-or {
+        @include center-absol;
+        font-size: 40px;
+        font-weight: 900;
+        letter-spacing: 20px;
+        padding-left: 20px;
+        color: rgb(4, 4, 50);
+        text-transform: uppercase;
+    }
+
+    &-sep {
+        @include center-absol;
+        width: 1px;
+        height: 100px;
+        background-color: rgb(4, 4, 50);
+    }
+}

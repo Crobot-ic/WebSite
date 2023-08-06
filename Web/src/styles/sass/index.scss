@@ -6,17 +6,17 @@
 // Pages styles
 @import "./Pages/Projects.scss";
 
-// Utils styles
-
 // Layout styles
 @import "./Layouts/Contact.scss";
 @import "./Layouts/HeaderBar.scss";
 @import "./Layouts/FooterBar.scss";
 @import "./Layouts/MainPage.scss";
 @import "./Layouts/GoTo.scss";
+@import './Layouts/HomeNavigation.scss';
 
 // Components styles
 @import "./Components/Loader.scss";
 @import "./Components/StarActivity.scss";
 @import "./Components/StarActivity.scss";
 @import './Components/ProjectCard.scss';
+@import "./Components/HomeNavChoice.scss";

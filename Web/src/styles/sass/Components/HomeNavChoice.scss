@@ -1,0 +1,26 @@
+@import "../Utils/ButtonPrimary.scss";
+
+.home-nav {
+    text-align: center;
+
+    &-title {
+        font-variant-caps: petite-caps;
+        color: rgb(4, 4, 50);
+        margin-bottom: 10px;
+    }
+
+    &-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        height: 80px;
+        width: 80%;
+        margin: auto;
+    }
+
+    &-button {
+        @include button-primary(500px, 60px);
+    }
+}
