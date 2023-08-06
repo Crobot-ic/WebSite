@@ -26,8 +26,8 @@ const FooterBar = () => {
                 <div className="footer-bar-row">
                     <ul>
                         <li><Link to="/">Accueil</Link></li>
-                        <li><Link to="/calendar">Projets</Link></li>
-                        <li><Link to="/calendar">Événements</Link></li>
+                        <li><Link to="/projects">Projets</Link></li>
+                        <li><Link to="/events">Événements</Link></li>
                     </ul>
                 </div>
 
