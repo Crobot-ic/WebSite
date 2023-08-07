@@ -1,3 +1,5 @@
+@import "../Utils/TitleApp.scss";
+
 .contact-us {
     padding-bottom: 75px;
     padding-top: 40px;
@@ -17,14 +19,11 @@
     &-title {
         position: relative;
         z-index: 15;
-        overflow: hidden;
+        @include titleApp;
 
         h3 {
             padding-top: 40px;
             padding-bottom: 25px;
-            transform: translateY(100%);
-            animation: apparitionTitle 1s cubic-bezier(.17, .67, .11, .88) forwards;
-            text-align: center;
             color: rgb(4, 4, 50);
             font-variant-caps: small-caps;
             font-weight: 500;

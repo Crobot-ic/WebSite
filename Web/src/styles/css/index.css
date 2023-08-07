@@ -21,6 +21,7 @@ body {
 @keyframes apparitionTitle {
   to {
     transform: translate(0);
+    opacity: 1;
   }
 }
 a {
@@ -82,12 +83,14 @@ body, #root {
   z-index: 15;
   overflow: hidden;
 }
-.contact-us-title h3 {
-  padding-top: 40px;
-  padding-bottom: 25px;
+.contact-us-title h1, .contact-us-title h2, .contact-us-title h3, .contact-us-title h4, .contact-us-title h5, .contact-us-title h6 {
   transform: translateY(100%);
   animation: apparitionTitle 1s cubic-bezier(0.17, 0.67, 0.11, 0.88) forwards;
   text-align: center;
+}
+.contact-us-title h3 {
+  padding-top: 40px;
+  padding-bottom: 25px;
   color: rgb(4, 4, 50);
   font-variant-caps: small-caps;
   font-weight: 500;
@@ -258,14 +261,63 @@ body, #root {
 .main-page::after {
   position: absolute;
   content: "";
-  background-color: #573103;
-  opacity: 0.3;
+  background-color: #222;
+  opacity: 0.6;
   bottom: 0;
   top: 0;
   left: 0;
   right: 0;
 }
+.main-page-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1000;
+  color: goldenrod;
+  font-variant-caps: petite-caps;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.main-page-info-title {
+  overflow: hidden;
+}
+.main-page-info-title h1, .main-page-info-title h2, .main-page-info-title h3, .main-page-info-title h4, .main-page-info-title h5, .main-page-info-title h6 {
+  transform: translateY(100%);
+  animation: apparitionTitle 1s cubic-bezier(0.17, 0.67, 0.11, 0.88) forwards;
+  text-align: center;
+}
+.main-page-info-title-content {
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 7px;
+}
+.main-page-info-slogan {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  opacity: 0;
+  animation: apparitionTitle 0.8s ease-in 0.5s forwards;
+}
+.main-page-sep {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 1px;
+  z-index: 1000;
+  background-color: goldenrod;
+  animation: appScaleWidth 0.7s ease 0.2s forwards;
+}
 
+@keyframes appScaleWidth {
+  to {
+    width: 100px;
+  }
+}
 .home-navigation {
   margin-top: 25px;
   display: grid;

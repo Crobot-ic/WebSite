@@ -1,3 +1,6 @@
+@import "../Utils/CenterAbsol.scss";
+@import "../Utils/TitleApp.scss";
+
 .main-page {
     height: 100vh;
     background-image: url("../../assets/ArrivalImage.png");
@@ -9,11 +12,54 @@
     &::after {
         position: absolute;
         content: "";
-        background-color: #573103;
-        opacity: .3;
+        background-color: #222;
+        opacity: .6;
         bottom: 0;
         top: 0;
         left: 0;
         right: 0;
+    }
+
+    &-info {
+        @include center-absol;
+        text-align: center;
+        z-index: 1000;
+        color: goldenrod;
+        font-variant-caps: petite-caps;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        &-title {
+            @include titleApp;
+            &-content {
+                font-size: 40px;
+                font-weight: 500;
+                letter-spacing: 7px;
+            }   
+        }   
+
+        &-slogan {
+            font-size: 30px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: apparitionTitle .8s ease-in .5s forwards;
+        }
+    }
+
+    &-sep {
+        @include center-absol;
+        width: 0;
+        height: 1px;
+        z-index: 1000;
+        background-color: goldenrod;
+        animation: appScaleWidth .7s ease .2s forwards;
+    }
+}
+
+@keyframes appScaleWidth {
+    to {
+        width: 100px;
     }
 }
