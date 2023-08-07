@@ -5,11 +5,11 @@ const Activity = (props) => {
 
     return (
         <div className="activity activity-visible">
-            <div className="activity-info">
-                <div className="activity-info-content">
+            <div className="activity-shape">
+                <div className="activity-shape-content">
                     <i className={ icon }></i>
                 </div>
-                <div className="activity-info-overlay"></div> 
+                <div className="activity-shape-overlay"></div> 
             </div>
             <h4 className="activity-description">{ name }</h4>
         </div>

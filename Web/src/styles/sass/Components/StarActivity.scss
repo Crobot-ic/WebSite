@@ -8,7 +8,7 @@
     transform: translateY(-50px);
     animation: goBack 1s ease 1 forwards;
     
-    &-info {
+    &-shape {
         height: 280px;
         width: 280px;
         clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 70%, 50% 100%, 0 70%);
@@ -41,6 +41,13 @@
                 font-size: 50px;
             }
         }
+    }
+
+    &-description {
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 10px;
+        font-variant-caps: small-caps;
     }
 }
 

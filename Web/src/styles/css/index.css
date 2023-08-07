@@ -294,6 +294,23 @@ body, #root {
   background-color: rgb(4, 4, 50);
 }
 
+.activities {
+  text-align: center;
+  margin: 40px 0;
+  padding-bottom: 35px;
+}
+.activities-title {
+  font-variant-caps: small-caps;
+  font-size: 28px;
+  font-weight: 600;
+}
+.activities-content {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .loader {
   position: fixed;
   top: 0;
@@ -330,7 +347,7 @@ body, #root {
   transform: translateY(-50px);
   animation: goBack 1s ease 1 forwards;
 }
-.activity-info {
+.activity-shape {
   height: 280px;
   width: 280px;
   clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 70%, 50% 100%, 0 70%);
@@ -340,7 +357,7 @@ body, #root {
   position: relative;
   overflow: hidden;
 }
-.activity-info-overlay {
+.activity-shape-overlay {
   animation: appBox 2.5s ease 1 forwards;
   top: 0;
   width: 100%;
@@ -349,7 +366,7 @@ body, #root {
   position: absolute;
   z-index: -5;
 }
-.activity-info-content {
+.activity-shape-content {
   height: 240px;
   width: 240px;
   clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 70%, 50% 100%, 0 70%);
@@ -358,8 +375,14 @@ body, #root {
   align-items: center;
   justify-content: center;
 }
-.activity-info-content i {
+.activity-shape-content i {
   font-size: 50px;
+}
+.activity-description {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+  font-variant-caps: small-caps;
 }
 
 @keyframes appBox {
@@ -386,7 +409,7 @@ body, #root {
   transform: translateY(-50px);
   animation: goBack 1s ease 1 forwards;
 }
-.activity-info {
+.activity-shape {
   height: 280px;
   width: 280px;
   clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 70%, 50% 100%, 0 70%);
@@ -396,7 +419,7 @@ body, #root {
   position: relative;
   overflow: hidden;
 }
-.activity-info-overlay {
+.activity-shape-overlay {
   animation: appBox 2.5s ease 1 forwards;
   top: 0;
   width: 100%;
@@ -405,7 +428,7 @@ body, #root {
   position: absolute;
   z-index: -5;
 }
-.activity-info-content {
+.activity-shape-content {
   height: 240px;
   width: 240px;
   clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 70%, 50% 100%, 0 70%);
@@ -414,8 +437,14 @@ body, #root {
   align-items: center;
   justify-content: center;
 }
-.activity-info-content i {
+.activity-shape-content i {
   font-size: 50px;
+}
+.activity-description {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+  font-variant-caps: small-caps;
 }
 
 @keyframes appBox {

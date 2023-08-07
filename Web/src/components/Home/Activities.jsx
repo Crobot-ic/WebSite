@@ -6,9 +6,9 @@ const Activities = () => {
     const { activities } = informations;
 
     return (
-        <>
-            <h2>Nos activités</h2>
-            <div>
+        <section className="activities">
+            <h2 className="activities-title">Nos activités</h2>
+            <div className="activities-content">
                 {activities.map((activity, index) => (
                     <Activity 
                         icon={activity.icon} 
@@ -17,7 +17,7 @@ const Activities = () => {
                     />
                 ))}
             </div>
-        </>
+        </section>
     );
 }
 
