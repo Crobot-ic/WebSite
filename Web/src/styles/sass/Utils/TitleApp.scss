@@ -1,0 +1,9 @@
+@mixin titleApp {
+    overflow: hidden;
+
+    h1, h2, h3, h4, h5, h6 {
+        transform: translateY(100%);
+        animation: apparitionTitle 1s cubic-bezier(.17, .67, .11, .88) forwards;
+        text-align: center;
+    }
+}
