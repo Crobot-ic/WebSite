@@ -1,13 +1,13 @@
 import Contact from "../components/Home/Contact";
 import MainPage from "../components/Home/MainPage";
-import Services from "../components/Home/Services";
+import Activities from "../components/Home/Activities";
 import HomeNavigation from "../components/Home/HomeNavigation";
 
 const Home = () => {    
     return (
         <>
             <MainPage />  
-            <Services />
+            <Activities />
             <HomeNavigation />
             <Contact />
         </>

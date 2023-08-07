@@ -320,17 +320,7 @@ body, #root {
     transform: rotate(360deg);
   }
 }
-.service {
-  height: 250px;
-  width: 250px;
-  clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 70%, 50% 100%, 0 70%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-.service-container {
+.activity {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -338,51 +328,38 @@ body, #root {
   width: 300px;
   opacity: 0;
   transform: translateY(-50px);
-}
-.service-container-visible {
   animation: goBack 1s ease 1 forwards;
 }
-.service-container-visible .overlay {
-  animation: appBox 2.5s ease 1 forwards;
-}
-.service .content {
-  height: 210px;
-  width: 210px;
+.activity-info {
+  height: 280px;
+  width: 280px;
   clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 70%, 50% 100%, 0 70%);
-  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
-.service .overlay {
+.activity-info-overlay {
+  animation: appBox 2.5s ease 1 forwards;
   top: 0;
   width: 100%;
   height: 0%;
-  background-color: darkblue;
+  background-color: rgb(4, 4, 50);
   position: absolute;
   z-index: -5;
 }
-.service .title-service {
-  position: absolute;
-  height: fit-content;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  text-align: center;
+.activity-info-content {
+  height: 240px;
+  width: 240px;
+  clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 70%, 50% 100%, 0 70%);
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.service img.title-service {
-  height: 100px;
-  width: auto;
-}
-.service .title-text-service {
-  font-size: 35px;
-  font-weight: 600;
-  font-variant-caps: small-caps;
-  color: black !important;
-}
-.service .description {
-  font-weight: 500;
-  font-size: 19px;
-  width: 80%;
-  margin: 15px auto auto auto;
-  text-align: center;
+.activity-info-content i {
+  font-size: 50px;
 }
 
 @keyframes appBox {
@@ -399,17 +376,7 @@ body, #root {
     opacity: 1;
   }
 }
-.service {
-  height: 250px;
-  width: 250px;
-  clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 70%, 50% 100%, 0 70%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-.service-container {
+.activity {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -417,51 +384,38 @@ body, #root {
   width: 300px;
   opacity: 0;
   transform: translateY(-50px);
-}
-.service-container-visible {
   animation: goBack 1s ease 1 forwards;
 }
-.service-container-visible .overlay {
-  animation: appBox 2.5s ease 1 forwards;
-}
-.service .content {
-  height: 210px;
-  width: 210px;
+.activity-info {
+  height: 280px;
+  width: 280px;
   clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 70%, 50% 100%, 0 70%);
-  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
-.service .overlay {
+.activity-info-overlay {
+  animation: appBox 2.5s ease 1 forwards;
   top: 0;
   width: 100%;
   height: 0%;
-  background-color: darkblue;
+  background-color: rgb(4, 4, 50);
   position: absolute;
   z-index: -5;
 }
-.service .title-service {
-  position: absolute;
-  height: fit-content;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  text-align: center;
+.activity-info-content {
+  height: 240px;
+  width: 240px;
+  clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 70%, 50% 100%, 0 70%);
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.service img.title-service {
-  height: 100px;
-  width: auto;
-}
-.service .title-text-service {
-  font-size: 35px;
-  font-weight: 600;
-  font-variant-caps: small-caps;
-  color: black !important;
-}
-.service .description {
-  font-weight: 500;
-  font-size: 19px;
-  width: 80%;
-  margin: 15px auto auto auto;
-  text-align: center;
+.activity-info-content i {
+  font-size: 50px;
 }
 
 @keyframes appBox {
