@@ -1,12 +1,35 @@
 {
     "urlApi": "http://localhost:5050", 
-    "services": [
-        {}
-    ], 
     "partnerships": [
         {
             "name": "Efrei Paris",
             "imageLocalizatiion": "EfreiLogo"
+        }
+    ], 
+    "activities": [
+        {
+            "icon": "fa fa-android",
+            "name": "Robotique"
+        }, 
+        {
+            "icon": "fa fa-list",
+            "name": "Projets"
+        }, 
+        {
+            "icon": "fa fa-plus-circle", 
+            "name": "Découverte"
+        }, 
+        {
+            "icon": "fa fa-users",
+            "name": "Cohésion"
+        }, 
+        {
+            "icon": "fa fa-wifi",
+            "name": "IoT"
+        }, 
+        {
+            "icon": "fa fa-code",
+            "name": "Programmation"
         }
     ]
 }

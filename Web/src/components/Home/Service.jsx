@@ -1,12 +1,16 @@
+import "../../styles/css/index.css";
+
 const Service = (props) => {
+    const { name, icon } = props; 
+
     return (
-        <div class="service-container service-container-visible">
+        <div class="service-container-visible">
             <div class="service">
                 <div class="content"></div> 
                 <div class="overlay"></div>
-                <img class="title-service" src="title" />
+                <i className={icon} aria-hidden="true"></i>
             </div>
-            <h4 class="description">Test</h4>
+            <h4 class="description">{ name }</h4>
         </div>
     );
 }

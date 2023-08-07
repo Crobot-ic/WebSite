@@ -1,36 +1,15 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../../styles/css/index.css";
 import informations from "../../../informations.json";
+import Service from "./Service";
 
 const Services = () => {
-    const activities = [
-        {
-            element: () => <FontAwesomeIcon icon="fa-solid fa-robot" />, 
-            name: "Robotique"
-        }, 
-        {
-            element: () => <FontAwesomeIcon icon="fa-solid fa-list-check" />,
-            name: "Projets", 
-        }, 
-        {
-            element: () => <FontAwesomeIcon icon="fa-solid fa-circle-plus" />, 
-            name: "Découverte"
-        }, 
-        {
-            element: () => <FontAwesomeIcon icon="fa-solid fa-user-group" />,
-            name: "Cohésion"
-        }, 
-        {
-            element: () => <FontAwesomeIcon icon="fa-solid fa-wifi" />,
-            name: "IoT"
-        }, 
-        {
-            element: () => <FontAwesomeIcon icon="fa-solid fa-code" />,
-            name: "Programmation"
-        }
-    ]
-    
+    const { activities } = informations;
+
     return (
-        <h2>Nos activités</h2>
+        <>
+            <h2>Nos activités</h2>
+            {activities.map(activity => <Service icon={activity.icon}  name={activity.name} />)}
+        </>
     );
 }
 
