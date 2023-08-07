@@ -6,8 +6,15 @@
     width: 300px;
     opacity: 0;
     transform: translateY(-50px);
-    animation: goBack 1s ease 1 forwards;
     
+    &-visible {
+        animation: goBack 1s ease 1 forwards;
+
+        .activity-shape-overlay {
+            animation: appBox 2.5s ease 1 forwards;
+        }
+    }   
+
     &-shape {
         height: 280px;
         width: 280px;
@@ -19,7 +26,6 @@
         overflow: hidden;
         
         &-overlay {
-          animation: appBox 2.5s ease 1 forwards;
           top: 0;
           width: 100%;
           height: 0%;

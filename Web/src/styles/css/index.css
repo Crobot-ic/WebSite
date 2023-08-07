@@ -401,7 +401,12 @@ body, #root {
   width: 300px;
   opacity: 0;
   transform: translateY(-50px);
+}
+.activity-visible {
   animation: goBack 1s ease 1 forwards;
+}
+.activity-visible .activity-shape-overlay {
+  animation: appBox 2.5s ease 1 forwards;
 }
 .activity-shape {
   height: 280px;
@@ -414,7 +419,6 @@ body, #root {
   overflow: hidden;
 }
 .activity-shape-overlay {
-  animation: appBox 2.5s ease 1 forwards;
   top: 0;
   width: 100%;
   height: 0%;
@@ -464,7 +468,12 @@ body, #root {
   width: 300px;
   opacity: 0;
   transform: translateY(-50px);
+}
+.activity-visible {
   animation: goBack 1s ease 1 forwards;
+}
+.activity-visible .activity-shape-overlay {
+  animation: appBox 2.5s ease 1 forwards;
 }
 .activity-shape {
   height: 280px;
@@ -477,7 +486,6 @@ body, #root {
   overflow: hidden;
 }
 .activity-shape-overlay {
-  animation: appBox 2.5s ease 1 forwards;
   top: 0;
   width: 100%;
   height: 0%;
