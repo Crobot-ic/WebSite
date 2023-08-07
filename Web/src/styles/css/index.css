@@ -323,6 +323,7 @@ body, #root {
   display: grid;
   position: relative;
   grid-template-columns: 1fr 1fr;
+  overflow: hidden;
 }
 .home-navigation-or {
   position: absolute;
