@@ -69,6 +69,14 @@ body, #root {
   padding-top: 40px;
   position: relative;
 }
+.contact-us-visible .contact-us-title {
+  overflow: hidden;
+}
+.contact-us-visible .contact-us-title h1, .contact-us-visible .contact-us-title h2, .contact-us-visible .contact-us-title h3, .contact-us-visible .contact-us-title h4, .contact-us-visible .contact-us-title h5, .contact-us-visible .contact-us-title h6 {
+  transform: translateY(100%);
+  animation: apparitionTitle 1s cubic-bezier(0.17, 0.67, 0.11, 0.88) forwards;
+  text-align: center;
+}
 .contact-us::before {
   content: "";
   position: absolute;
@@ -81,14 +89,9 @@ body, #root {
 .contact-us-title {
   position: relative;
   z-index: 15;
-  overflow: hidden;
-}
-.contact-us-title h1, .contact-us-title h2, .contact-us-title h3, .contact-us-title h4, .contact-us-title h5, .contact-us-title h6 {
-  transform: translateY(100%);
-  animation: apparitionTitle 1s cubic-bezier(0.17, 0.67, 0.11, 0.88) forwards;
-  text-align: center;
 }
 .contact-us-title h3 {
+  opacity: 0;
   padding-top: 40px;
   padding-bottom: 25px;
   color: rgb(4, 4, 50);
@@ -96,40 +99,44 @@ body, #root {
   font-weight: 500;
   font-size: 22px;
 }
-.contact-us form {
+.contact-us .contact-form {
   position: relative;
   z-index: 15;
   display: flex;
   justify-content: center;
   gap: 30px;
 }
-.contact-us form .input-contact,
-.contact-us form button {
+.contact-us .contact-form .input-contact, .contact-us .contact-form button {
   width: 555px;
   outline: none;
   box-shadow: none;
+  opacity: 0;
 }
-.contact-us form .input-contact {
+.contact-us .contact-form .input-contact {
   border: 1px solid #eef2f6;
   background: #f6f8fa;
   color: #555;
   padding: 8px;
 }
-.contact-us form textarea {
-  resize: none;
+.contact-us .contact-form .input-contact:not(textarea), .contact-us .contact-form button {
+  transform: translate(25px);
 }
-.contact-us form button.little-size-button {
+.contact-us .contact-form textarea {
+  resize: none;
+  transform: translate(-25px);
+}
+.contact-us .contact-form button.little-size-button {
   display: none;
 }
-.contact-us form .informations-contact {
+.contact-us .contact-form .informations-contact {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.contact-us form .informations-contact .input-contact, .contact-us form .informations-contact button {
+.contact-us .contact-form .informations-contact .input-contact, .contact-us .contact-form .informations-contact button {
   height: 60px;
 }
-.contact-us form .informations-contact button {
+.contact-us .contact-form .informations-contact button {
   width: 100%;
   height: 60px;
   background: rgb(4, 4, 50);
@@ -137,6 +144,24 @@ body, #root {
   color: goldenrod;
   font-size: 18px;
   cursor: pointer;
+}
+.contact-us .contact-form-visible .input-contact, .contact-us .contact-form-visible button {
+  animation: apparitionTitle 0.2s ease forwards;
+}
+.contact-us .contact-form-visible textarea.input-contact {
+  animation-duration: 0.7s;
+}
+.contact-us .contact-form-visible #name-contact-form {
+  animation-delay: 0.2s;
+}
+.contact-us .contact-form-visible #email-contact-form {
+  animation-delay: 0.3s;
+}
+.contact-us .contact-form-visible #object-contact-form {
+  animation-delay: 0.4s;
+}
+.contact-us .contact-form-visible .button-submit {
+  animation-delay: 0.5s;
 }
 
 @media all and (max-width: 1200px) {

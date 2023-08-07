@@ -5,6 +5,12 @@
     padding-top: 40px;
     position: relative;
 
+    &-visible {
+        .contact-us-title {
+            @include titleApp;
+        }
+    }
+
     &::before {
         content: "";
         position: absolute;
@@ -12,16 +18,15 @@
         right: 0;
         top: 0;
         bottom: 0;
-
         opacity: .5;
     }
 
     &-title {
         position: relative;
         z-index: 15;
-        @include titleApp;
 
         h3 {
+            opacity: 0;
             padding-top: 40px;
             padding-bottom: 25px;
             color: rgb(4, 4, 50);
@@ -31,18 +36,18 @@
         }
     }
 
-    form {
+    .contact-form {
         position: relative;
         z-index: 15;
         display: flex;
         justify-content: center;
         gap: 30px;
 
-        .input-contact,
-        button {
+        .input-contact, button {
             width: 555px;
             outline: none;
             box-shadow: none;
+            opacity: 0;
         }
 
         .input-contact {
@@ -52,8 +57,13 @@
             padding: 8px;
         }
 
+        .input-contact:not(textarea), button {
+            transform: translate(25px);
+        }
+
         textarea {
             resize: none;
+            transform: translate(-25px);
         }
 
         button.little-size-button {
@@ -77,6 +87,32 @@
                 color: goldenrod;
                 font-size: 18px;
                 cursor: pointer;
+            }
+        }
+
+        &-visible {
+            .input-contact, button {
+                animation: apparitionTitle .2s ease forwards;
+            } 
+            
+            textarea.input-contact {
+                animation-duration: .7s;
+            }   
+
+            #name-contact-form {
+                animation-delay: .2s;
+            }
+
+            #email-contact-form {
+                animation-delay: .3s;
+            }
+
+            #object-contact-form {
+                animation-delay: .4s;
+            }
+
+            .button-submit {
+                animation-delay: .5s;
             }
         }
     }

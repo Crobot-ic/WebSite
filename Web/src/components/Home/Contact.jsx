@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react";
 import Loader from "../General/Loader"
 import informations from "../../../informations.json";
 import Modal from "../General/Modal";
@@ -9,11 +9,14 @@ const Contact = () => {
     const [informationModal, setInformationModal] = useState("");
     const [showModal, setShowModal] = useState(false);
     const [titleModal, setTitleModal] = useState("");
+    const [isIntersected, setIsIntersected] = useState(false);
+    const [isAlreadyIntersected, setIsAlreadyIntersected] = useState(false);
 
     const contentRef = useRef();
     const emailRef = useRef();
     const nameRef = useRef();
     const subjectRef = useRef();
+    const componentRef = useRef();
 
     const closeAlert = () => setShowModal(false);
 
@@ -53,8 +56,25 @@ const Contact = () => {
         setShowModal(true);
     }
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            setIsIntersected(entry.isIntersecting);
+        }, { threshold: 1 });
+        observer.observe(componentRef.current);
+
+    }, []);
+
+    useEffect(() => {
+        if (isIntersected && !isAlreadyIntersected) {
+            setIsAlreadyIntersected(true);
+        }
+    }, [isIntersected]);
+
     return (
-        <section className="contact-us">
+        <section 
+            className={`contact-us ${isAlreadyIntersected ? "contact-us-visible" : ""}`}
+            ref={componentRef}
+        >
         <div className="contact-us-title">
             <h3>Contactez-nous !</h3>
         </div>
@@ -62,7 +82,7 @@ const Contact = () => {
         <form 
             onSubmit={submitForm}
             id="contact-form"
-            className="form contact-form"
+            className={`form contact-form ${isAlreadyIntersected ? "contact-form-visible" : ""}`}
         >   
             <button 
                 className="button button-submit submit-form little-size-button"
@@ -82,6 +102,7 @@ const Contact = () => {
                         type="text"
                         placeholder="Entrez votre nom" 
                         className="input-contact contact-name"
+                        id="name-contact-form"
                         ref={nameRef}
                     />
                 </div>
