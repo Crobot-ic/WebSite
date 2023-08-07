@@ -1,4 +1,5 @@
 @import "../Utils/TitleApp.scss";
+@import "../Utils/SectionTitle.scss";
 
 .contact-us {
     padding-bottom: 75px;
@@ -29,10 +30,7 @@
             opacity: 0;
             padding-top: 40px;
             padding-bottom: 25px;
-            color: rgb(4, 4, 50);
-            font-variant-caps: small-caps;
-            font-weight: 500;
-            font-size: 22px;
+            @include section-title;
         }
     }
 

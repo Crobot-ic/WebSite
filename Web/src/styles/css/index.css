@@ -94,10 +94,10 @@ body, #root {
   opacity: 0;
   padding-top: 40px;
   padding-bottom: 25px;
-  color: rgb(4, 4, 50);
   font-variant-caps: small-caps;
-  font-weight: 500;
-  font-size: 22px;
+  font-size: 28px;
+  font-weight: 600;
+  color: rgb(4, 4, 50);
 }
 .contact-us .contact-form {
   position: relative;
@@ -381,6 +381,7 @@ body, #root {
   font-variant-caps: small-caps;
   font-size: 28px;
   font-weight: 600;
+  color: rgb(4, 4, 50);
 }
 .activities-content {
   width: 80%;
@@ -621,7 +622,9 @@ body, #root {
   animation-delay: 0.4s;
 }
 .home-nav-title {
-  font-variant-caps: petite-caps;
+  font-variant-caps: small-caps;
+  font-size: 28px;
+  font-weight: 600;
   color: rgb(4, 4, 50);
   margin-bottom: 10px;
 }

@@ -1,12 +1,12 @@
+@import "../Utils/SectionTitle.scss";
+
 .activities {
     text-align: center;
     margin: 40px 0;
     padding-bottom: 35px;
 
     &-title {
-        font-variant-caps: small-caps;
-        font-size: 28px;
-        font-weight: 600;
+        @include section-title;
     }
 
     &-content {

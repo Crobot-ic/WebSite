@@ -1,4 +1,5 @@
 @import "../Utils/ButtonPrimary.scss";
+@import '../Utils/SectionTitle.scss';
 
 .home-nav {
     text-align: center;
@@ -18,8 +19,7 @@
     }
 
     &-title {
-        font-variant-caps: petite-caps;
-        color: rgb(4, 4, 50);
+        @include section-title;
         margin-bottom: 10px;
     }
 
