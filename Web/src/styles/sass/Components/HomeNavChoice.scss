@@ -3,6 +3,20 @@
 .home-nav {
     text-align: center;
 
+    .home-nav-title, .home-nav-text, .home-nav-button {
+        opacity: 0;
+    }
+
+    &-visible {
+        .home-nav-title, .home-nav-text, .home-nav-button {
+            animation: apparitionTitle .6s linear forwards;
+        }
+
+        .home-nav-button {
+            animation-delay: .4s;
+        }
+    }
+
     &-title {
         font-variant-caps: petite-caps;
         color: rgb(4, 4, 50);
@@ -22,5 +36,6 @@
 
     &-button {
         @include button-primary(500px, 60px);
+        transform: translateY(25px);
     }
 }
