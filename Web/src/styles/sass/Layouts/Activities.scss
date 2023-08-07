@@ -14,5 +14,10 @@
         margin: auto;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+
+        > div {
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 }
