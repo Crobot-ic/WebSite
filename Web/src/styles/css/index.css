@@ -377,7 +377,15 @@ body, #root {
   margin: 40px 0;
   padding-bottom: 35px;
 }
-.activities-title {
+.activities-title-visible {
+  overflow: hidden;
+}
+.activities-title-visible h1, .activities-title-visible h2, .activities-title-visible h3, .activities-title-visible h4, .activities-title-visible h5, .activities-title-visible h6 {
+  transform: translateY(100%);
+  animation: apparitionTitle 1s cubic-bezier(0.17, 0.67, 0.11, 0.88) forwards;
+  text-align: center;
+}
+.activities-title-content {
   font-variant-caps: small-caps;
   font-size: 28px;
   font-weight: 600;
