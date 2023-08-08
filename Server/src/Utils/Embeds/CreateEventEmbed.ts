@@ -11,8 +11,9 @@ const createEventEmbed: (info: any) => MessageEmbed = (info: any): MessageEmbed 
     embed.setTitle(info.eventName as string);
     embed.setDescription((info.eventDescription as string).slice(0, 1023));
     embed.setFields(
+        { name: "Endroit :", value: info.place,  inline: true },
         { name: "Date : ", value: eventDate, inline: true },
-        { name: "Durée :", value: eventDuration, inline: true }
+        { name: "Durée :", value: eventDuration, inline: true }, 
     );
     embed.setColor("DARK_ORANGE");
     return embed;

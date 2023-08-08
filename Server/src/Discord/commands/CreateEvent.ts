@@ -33,12 +33,20 @@ module.exports = {
             required: true, 
             type: "STRING"
         },
+        {
+            name: "place", 
+            description: "Le lieu où l'événement se déroulera", 
+            required: true, 
+            type: "STRING", 
+            autocomplete: true
+        }
     ],
     runSlash: async (client: Client, interaction: any) => {
         const eventName = interaction.options.getString("event_name") as string;
         const description = interaction.options.getString("description") as string;
         const eventDate = interaction.options.getString("event_date") as string;
         const eventDuration = interaction.options.getString("event_duration") as string;
+        const place = interaction.options.getString("place") as string;
 
         if(process.env.MODE != "prod" && process.env.MODE != "dev") {
             return interaction.reply({ 
@@ -54,6 +62,13 @@ module.exports = {
                 content: "Vous ne pouvez pas utiliser cette commande dans ce salon !",
                 ephemeral: true 
             })
+        }
+
+        if(place != "InnovationLab" && place != "Discord" && place != "Efrei") {
+            return interaction.reply({
+                content: "Vous devez rentrer une des 3 valeurs : Discord, InnovationLab ou Efrei pour le choix de l'endroit !", 
+                ephemeral: true
+            });
         }
 
         // Check presence of information
@@ -115,7 +130,8 @@ module.exports = {
             eventName, 
             description, 
             duration: durationTs, 
-            startDate: dateTs
+            startDate: dateTs, 
+            place
         });
 
         // Créer et envoyer l'embed
@@ -123,7 +139,8 @@ module.exports = {
             eventDuration: durationTs, 
             eventName, 
             eventDescription: description,
-            eventDate: dateTs
+            eventDate: dateTs, 
+            place
         }
         const embeds = [createEventEmbed(eventInfos)];
 
@@ -133,7 +150,7 @@ module.exports = {
             embeds
         })  
 
-        const logChannel = await client.channels.fetch(channelsInformations[runMode].EVENT_CHANNEL) as TextBasedChannel;
+        const logChannel = await client.channels.fetch(channelsInformations[runMode].LOG_BOT_CHANNEL) as TextBasedChannel;
         logChannel.send({
             // content: interaction.user.username + " a créé un nouvel événement !", 
             embeds
