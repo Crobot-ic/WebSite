@@ -5,9 +5,9 @@ import express from "express";
 import cors, { CorsOptions } from "cors";
 
 import setup from "./Models/Setup";
-import contactRoutes from "./Express/Middlewares/Routes/Contact";
-import eventsRoutes from "./Express/Middlewares/Routes/Events";
-import projectsRoutes from "./Express/Middlewares/Routes/Projects";
+import contactRoutes from "./Express/Routes/Contact";
+import eventsRoutes from "./Express/Routes/Events";
+import projectsRoutes from "./Express/Routes/Projects";
 import addClient from "./Express/Middlewares/Discord/AddBotInRequest";
 import morgan from "morgan";
 import { Client, Collection } from "discord.js";
