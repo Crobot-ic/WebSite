@@ -9,7 +9,7 @@ const App = () => {
     return (
         <>
             <div className="content">
-                {/* <HeaderBar /> */}
+                <HeaderBar />
                 <main>
                     <Routes>
                         <Route path="/" element={ <Home /> } />
@@ -18,7 +18,7 @@ const App = () => {
                     </Routes>
                 </main>
             </div>
-            {/* <FooterBar /> */}
+            <FooterBar />
         </>
     )
 }

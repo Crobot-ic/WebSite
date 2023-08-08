@@ -18,9 +18,9 @@ const Events = () => {
 
     return (
         <>
-            <section className="events">
+            <section className="events-section">
                 {events.incomingEvents.length != 0 && (
-                    <div className="events-container events-incoming">
+                    <div className="events events-incoming">
                         <h2 className="events-title">
                             Événements à venir &nbsp;
                             <span>({ events.incomingEvents.length })</span>
