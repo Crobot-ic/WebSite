@@ -23,7 +23,9 @@ const GetEvents = async (req: Request, res: Response) => {
         else incomingEvents.push(eventInfo);
     }
 
-    return res.status(200).json({ incomingEvents, pastEvents })
+    console.log({ incomingEvents, pastEvents });
+
+    return res.status(200).json({ incomingEvents, pastEvents });
 }
 
 export default GetEvents;

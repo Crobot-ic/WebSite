@@ -26,6 +26,11 @@ const Events = Connection.define("Event", {
     startDate: {
         type: DataTypes.STRING(20), 
         allowNull: false   
+    }, 
+
+    place: {
+        type: DataTypes.ENUM("Discord", "InnovationLab", "Efrei"), 
+        defaultValue: "InnovationLab"
     }
 }, { timestamps: false });
 
