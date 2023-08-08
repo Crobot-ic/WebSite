@@ -6,6 +6,8 @@ import channelInformations from "../../../../ChannelsConfig.json";
 import { TextBasedChannel } from "discord.js";
 
 const sendMail = async (req: any, res: any) => {
+    console.log("Hein ?");
+    
     if(process.env.MODE != "prod" && process.env.MODE != "dev") {
         return res.status(500).json({ information: "Wooops, something went wrong !" });
     }
@@ -29,8 +31,8 @@ const sendMail = async (req: any, res: any) => {
     // Send the email
     const mailOptions = createMailOptions(req.body.subject, req.body.name, req.body.email, req.body.content);
     transporter.sendMail(mailOptions, (err, suc) => {
-        if(suc) return res.status(200).json("Message envoyé avec succès !");
-        if(err) return res.status(500).json("Une erreur s'est produite");
+        if(suc) return res.status(200).json({ information: "Message envoyé avec succès !" });
+        if(err) return res.status(500).json({ information: "Une erreur s'est produite" });
     })
 }
 
