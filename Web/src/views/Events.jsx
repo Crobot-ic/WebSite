@@ -10,6 +10,7 @@ const Events = () => {
         const getEvents = async () => {
             const eventsSent = await (await fetch(informations.urlApi + "/events/")).json();
             setEvents(eventsSent);
+            console.log(eventsSent);
         }
 
         getEvents();
@@ -26,16 +27,16 @@ const Events = () => {
                         </h2>
 
                         <div className="events-list events-incoming-list">
-                            {events.incomingEvents.map((event, index) => {
+                            {events.incomingEvents.map((event, index) => (
                                 <EventCard 
                                     key = { index }
-                                    place = { event.place}
+                                    place = { event.place }
                                     startTime = { event.startDate }
-                                    duration = { event.Duration }
+                                    duration = { event.duration }
                                     description = { event.description }
                                     eventName = { event.eventName }
                                 />
-                            })}
+                            ))}
                         </div>
                     </div>
                 )}
