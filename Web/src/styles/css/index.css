@@ -495,73 +495,20 @@ body, #root {
     opacity: 1;
   }
 }
-.activity {
+.star {
+  width: 20px;
+  height: 20px;
+  background-color: goldenrod;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-  width: 300px;
-  opacity: 0;
-  transform: translateY(-50px);
+  justify-content: flex-end;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
-.activity-visible {
-  animation: goBack 1s ease 1 forwards;
-}
-.activity-visible .activity-shape-overlay {
-  animation: appBox 2.5s ease 1 forwards;
-}
-.activity-shape {
-  height: 280px;
-  width: 280px;
-  clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 70%, 50% 100%, 0 70%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-.activity-shape-overlay {
-  top: 0;
+.star-empty {
   width: 100%;
-  height: 0%;
-  background-color: rgb(4, 4, 50);
-  position: absolute;
-  z-index: -5;
-}
-.activity-shape-content {
-  height: 240px;
-  width: 240px;
-  clip-path: polygon(0 30%, 50% 0, 100% 30%, 100% 70%, 50% 100%, 0 70%);
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.activity-shape-content i {
-  font-size: 50px;
-  color: rgb(4, 4, 50);
-}
-.activity-description {
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: 10px;
-  font-variant-caps: small-caps;
+  height: 100%;
+  background-color: rgb(40, 40, 40);
 }
 
-@keyframes appBox {
-  from {
-    height: 0%;
-  }
-  to {
-    height: 100%;
-  }
-}
-@keyframes goBack {
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
 .project {
   width: 400px;
   background-color: white;
