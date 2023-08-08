@@ -75,75 +75,75 @@ const Contact = () => {
             className={`contact-us ${isAlreadyIntersected ? "contact-us-visible" : ""}`}
             ref={componentRef}
         >
-        <div className="contact-us-title">
-            <h3>Contactez-nous !</h3>
-        </div>
+            <div className="contact-us-title">
+                <h3>Contactez-nous !</h3>
+            </div>
 
-        <form 
-            onSubmit={submitForm}
-            id="contact-form"
-            className={`form contact-form ${isAlreadyIntersected ? "contact-form-visible" : ""}`}
-        >   
-            <button 
-                className="button button-submit submit-form little-size-button"
-                type="submit"
-            >Valider</button>
-
-            <textarea 
-                id="mail-content"
-                className="content-message input-contact"
-                ref={contentRef}
-                placeholder="Entrez le contenu de votre message"
-            ></textarea>
-
-            <div className="informations-contact">
-                <div className="contact-form-group">
-                    <input 
-                        type="text"
-                        placeholder="Entrez votre nom" 
-                        className="input-contact contact-name"
-                        id="name-contact-form"
-                        ref={nameRef}
-                    />
-                </div>
-
-                <div className="contact-form-group">
-                    <input 
-                        type="text" 
-                        id="email-contact-form"
-                        placeholder="Entrez votre email"
-                        ref={emailRef}
-                        className="input-contact contact-email"
-                    />
-                </div>
-
-                <div className="contact-form-group">
-                    <input 
-                        type="text"
-                        id="object-contact-form"
-                        placeholder="Entrez le sujet de votre contact"
-                        ref={subjectRef}
-                        className="input-contact contact-object"
-                    />
-                </div>
-
+            <form 
+                onSubmit={submitForm}
+                id="contact-form"
+                className={`form contact-form ${isAlreadyIntersected ? "contact-form-visible" : ""}`}
+            >   
                 <button 
-                    className="button button-submit submit-form"
+                    className="button button-submit submit-form little-size-button"
                     type="submit"
                 >Valider</button>
-            </div>
-        </form>
 
-        {loading && <Loader />}
-        {showModal && <Modal
-            titleModal={titleModal}
-            nameButton="Fermer"
-            closeModal={closeAlert}
-            createAction={closeAlert}
-        >
-            <p>{ informationModal }</p>
-        </Modal>}
-    </section>
+                <textarea 
+                    id="mail-content"
+                    className="content-message input-contact"
+                    ref={contentRef}
+                    placeholder="Entrez le contenu de votre message"
+                ></textarea>
+
+                <div className="informations-contact">
+                    <div className="contact-form-group">
+                        <input 
+                            type="text"
+                            placeholder="Entrez votre nom" 
+                            className="input-contact contact-name"
+                            id="name-contact-form"
+                            ref={nameRef}
+                        />
+                    </div>
+
+                    <div className="contact-form-group">
+                        <input 
+                            type="text" 
+                            id="email-contact-form"
+                            placeholder="Entrez votre email"
+                            ref={emailRef}
+                            className="input-contact contact-email"
+                        />
+                    </div>
+
+                    <div className="contact-form-group">
+                        <input 
+                            type="text"
+                            id="object-contact-form"
+                            placeholder="Entrez le sujet de votre contact"
+                            ref={subjectRef}
+                            className="input-contact contact-object"
+                        />
+                    </div>
+
+                    <button 
+                        className="button button-submit submit-form"
+                        type="submit"
+                    >Valider</button>
+                </div>
+            </form>
+
+            {loading && <Loader />}
+            {showModal && <Modal
+                titleModal={titleModal}
+                nameButton="Fermer"
+                closeModal={closeAlert}
+                createAction={closeAlert}
+            >
+                <p>{ informationModal }</p>
+            </Modal>}
+        </section>
     )
 }
 

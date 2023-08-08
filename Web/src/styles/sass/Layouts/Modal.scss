@@ -1,0 +1,99 @@
+.modal {
+    padding: 5px 0px 20px 0px !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10000;
+
+    &-layout, &-content {
+        position: fixed;
+    }
+
+    &-layout {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 2000;
+        background-color: rgba(20, 20, 20, .7);
+    }
+
+    &-content {
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        padding-top: 5px;
+        z-index: 2100;
+        width: 280px;
+
+        .modal-title-container {
+            overflow: hidden;
+        }
+
+        h2 {
+            transform: translateY(100%);
+            overflow: hidden;
+            animation: apparitionTitle 1s cubic-bezier(.17, .67, .11, .88) forwards;
+        }
+
+        &-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #B1B1B1;
+    
+            h4 {
+                animation: apparitionTitle 1s cubic-bezier(.17, .67, .11, .88) forwards;
+                transform: translateY(100%);
+                color: #47424c;
+                font-variant-caps: small-caps;
+                font-weight: 500;
+                font-size: 22px;
+            }
+        }
+
+        &-button-container {
+            padding-top: 15px;
+            padding-bottom: 10px;
+            text-align: right;
+    
+            button {
+                padding: 10px 20px;
+                background: #47424c;
+                border: none;
+                color: #fff;
+                font-size: 15px;
+                cursor: pointer;
+            }
+        }
+
+        &-information {
+            border-bottom: 1px solid #B1B1B1;
+            padding: 15px 0;
+        }
+    }
+
+    &-component {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+#modal-close-icon {
+    width: 60px;
+    height: fit-content;
+
+    path {
+        cursor: pointer;
+        fill: none;
+        stroke-width: 40px;
+        stroke-linecap: round;
+        stroke: rgb(83, 82, 82);
+        stroke-dasharray: 240px 1000px;
+        stroke-dashoffset: -650px;
+    }
+}
