@@ -2,8 +2,6 @@ import "../../styles/css/index.css";
 
 const Star = (props) => {
     const { filled } = props;
-    
-    console.log(filled);
 
     return (
         <div className="star">
