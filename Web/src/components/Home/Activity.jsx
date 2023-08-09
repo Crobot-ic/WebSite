@@ -10,7 +10,7 @@ const Activity = (props) => {
     useEffect(() => {
         const observer = new IntersectionObserver(([entry]) => {
             setIsIntersecting(entry.isIntersecting)
-        }, { rootMargin: "-100px", threshold: 1 });
+        }, { threshold: 1 });
         observer.observe(activityRef.current);
     }, []);
 

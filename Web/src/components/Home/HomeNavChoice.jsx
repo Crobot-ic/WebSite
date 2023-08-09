@@ -12,7 +12,7 @@ const HomeNavChoice = (props) => {
     useEffect(() => {
         const observer = new IntersectionObserver(([entry]) => {
             setIsIntersecting(entry.isIntersecting)
-        }, { threshold: 1, rootMargin: "20px" });
+        }, { threshold: 1 });
         observer.observe(homeNavRef.current);
     }, []);
 
