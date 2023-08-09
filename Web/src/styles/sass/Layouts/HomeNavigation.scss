@@ -24,3 +24,15 @@
         background-color: rgb(4, 4, 50);
     }
 }
+
+@media all and (max-width: 1050px) {
+    .home-navigation {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: -55px;
+
+        &-or, &-sep {
+            display: none;
+        }
+    }
+}

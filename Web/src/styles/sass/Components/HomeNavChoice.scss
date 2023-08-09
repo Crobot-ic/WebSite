@@ -27,9 +27,9 @@
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 6;
         -webkit-box-orient: vertical;
-        height: 80px;
+        height: 120px;
         width: 80%;
         margin: auto;
     }
@@ -37,5 +37,25 @@
     &-button {
         @include button-primary(500px, 60px);
         transform: translateY(25px);
+    }
+}
+
+@media all and (max-width: 1050px) {
+    .home-nav {
+        &-text {
+            -webkit-line-clamp: initial;
+            height: fit-content;
+            padding: 0 0 15px 0;
+        }
+
+        &-button {
+            margin-bottom: 45px;
+        }
+    }
+}
+
+@media all and (max-width: 550px) {
+    .home-nav-button {
+        @include button-primary(calc(100% - 50px), 60px);
     }
 }
