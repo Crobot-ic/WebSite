@@ -37,16 +37,29 @@ body, #root {
   margin-top: 100px;
 }
 .projects-section .projects, .projects-section .events, .events-section .projects, .events-section .events {
-  margin: 0px 100px 40px 100px;
+  margin: 0px 100px 40px 0px;
 }
 .projects-section .projects-title, .projects-section .events-title, .events-section .projects-title, .events-section .events-title {
+  margin-left: 100px;
   font-variant-caps: small-caps;
   padding-bottom: 10px;
+  width: 100vw;
 }
 .projects-section .projects-title span, .projects-section .events-title span, .events-section .projects-title span, .events-section .events-title span {
   font-size: 12px;
 }
+@media all and (max-width: 750px) {
+  .projects-section .projects-title, .projects-section .events-title, .events-section .projects-title, .events-section .events-title {
+    margin-left: 50px;
+  }
+}
+@media all and (max-width: 550px) {
+  .projects-section .projects-title, .projects-section .events-title, .events-section .projects-title, .events-section .events-title {
+    margin-left: 15px;
+  }
+}
 .projects-section .projects-list, .projects-section .events-list, .events-section .projects-list, .events-section .events-list {
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
@@ -647,8 +660,8 @@ body, #root {
   }
 }
 .star {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   background-color: goldenrod;
   display: flex;
   justify-content: flex-end;
@@ -662,6 +675,7 @@ body, #root {
 
 .project, .event {
   width: 400px;
+  max-width: 85vw;
   background-color: white;
 }
 .project-picture img, .event-picture img {
@@ -678,7 +692,7 @@ body, #root {
 }
 .project-info-description, .event-info-description {
   margin: 20px auto;
-  width: 350px;
+  width: 90%;
   height: 80px;
   text-align: center;
   overflow: hidden;
@@ -689,7 +703,7 @@ body, #root {
 }
 .project-info-time, .event-info-time {
   display: flex;
-  width: 350px;
+  width: 92%;
   margin: auto;
   padding-bottom: 20px;
   justify-content: space-between;

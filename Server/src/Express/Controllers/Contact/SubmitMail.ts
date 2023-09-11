@@ -6,8 +6,6 @@ import channelInformations from "../../../../ChannelsConfig.json";
 import { TextBasedChannel } from "discord.js";
 
 const sendMail = async (req: any, res: any) => {
-    console.log("Hein ?");
-    
     if(process.env.MODE != "prod" && process.env.MODE != "dev") {
         return res.status(500).json({ information: "Wooops, something went wrong !" });
     }

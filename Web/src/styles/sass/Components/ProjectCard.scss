@@ -1,5 +1,6 @@
 .project, .event {
     width: 400px;
+    max-width: 85vw;
     background-color: white;
 
     &-picture {
@@ -21,7 +22,7 @@
 
         &-description {
             margin: 20px auto;
-            width: 350px;
+            width: 90%;
             height: 80px;
             text-align: center;
             overflow: hidden;
@@ -33,7 +34,7 @@
 
         &-time {
             display: flex;  
-            width: 350px;
+            width: 92%;
             margin: auto;
             padding-bottom: 20px;
             justify-content: space-between;
@@ -44,7 +45,6 @@
             }
 
             &-advancement {
-
                 &-stars {
                     display: flex; 
                 }   

@@ -33,7 +33,7 @@ const ProjectCard = (props) => {
                 <p className="project-info-description">{ projectDescription }</p>
                 <div className="project-info-time">
                     <div className="project-info-time-advancement">
-                        <h6>Avancement du projet</h6>
+                        <h6>Avancement</h6>
                         <div className="project-info-time-advancement-stars">
                             {Array.from(Array(5), (element, index) => (
                                 <Star   
