@@ -35,6 +35,7 @@ body, #root {
 
 .projects-section, .events-section {
   margin-top: 100px;
+  overflow: hidden;
 }
 .projects-section .projects, .projects-section .events, .events-section .projects, .events-section .events {
   margin: 0px 100px 40px 0px;
@@ -217,7 +218,7 @@ body, #root {
 }
 .header {
   position: fixed;
-  width: 100%;
+  width: 100vw;
   top: 0;
   background-color: rgb(4, 4, 50);
   z-index: 1555;
