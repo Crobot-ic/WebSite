@@ -49,7 +49,7 @@
         "options": [
             {
                 "name": "id_projet", 
-                "description": "Identifiant du projet à supprimer", 
+                "description": "Id of the project to delete", 
                 "required": true, 
                 "type": "STRING"
             }
