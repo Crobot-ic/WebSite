@@ -20,7 +20,7 @@
                 "name": "advancement",
                 "description": "Avancement du projet (dans l'intervalle [0 - 5])",
                 "required": true,
-                "type": "STRING"
+                "type": "NUMBER"
             },
             {
                 "name": "image", 

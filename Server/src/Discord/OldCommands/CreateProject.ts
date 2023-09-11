@@ -1,4 +1,4 @@
-import { Message, Client, MessageCollector, TextBasedChannel, TextChannel, MessageAttachment, MessagePayload } from "discord.js"
+import { Message, Client, MessageCollector, TextBasedChannel, TextChannel, MessageAttachment, MessagePayload, CommandInteraction } from "discord.js"
 import uniqueProjectName from "../../Utils/Validators/UniqueProjectName";
 import getDateTsForEvent from "../../Utils/Discord/GetDateTsForEvent";
 import fetch from "node-fetch";
@@ -44,7 +44,7 @@ module.exports = {
             required: false
         }
     ],
-    runSlash: async (client: Client, interaction: any) => {        
+    runSlash: async (client: Client, interaction: CommandInteraction) => {        
         const projectName = interaction.options.getString("nom_projet") as string;
         const description = interaction.options.getString("description") as string;
         const advancement = interaction.options.getString("avancement") as string;
