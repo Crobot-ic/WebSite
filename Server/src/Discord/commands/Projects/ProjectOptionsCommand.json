@@ -1,0 +1,178 @@
+[
+    { 
+        "name": "create", 
+        "type": "SUB_COMMAND", 
+        "description": "Creation of a project !", 
+        "options": [
+            {
+                "name": "name",
+                "description": "Nom du projet", 
+                "required": true, 
+                "type": "STRING"
+            }, 
+            {
+                "name": "description",
+                "description": "Description du projet",
+                "required": true,
+                "type": "STRING"
+            },
+            {
+                "name": "advancement",
+                "description": "Avancement du projet (dans l'intervalle [0 - 5])",
+                "required": true,
+                "type": "STRING"
+            },
+            {
+                "name": "image", 
+                "description": "The image of the project", 
+                "required": true, 
+                "type": "ATTACHMENT"
+            },
+            {
+                "name": "deadline",
+                "description": "Deadline du projet (rentrer sous le format : DD/MM/YYYY)",
+                "required": false,
+                "type": "STRING"
+            },
+            {
+                "name": "gh_repo", 
+                "description": "The Github repository's project", 
+                "type": "STRING",
+                "required": false
+            }
+        ]
+    }, 
+    { 
+        "name": "delete", 
+        "type": "SUB_COMMAND", 
+        "description": "Deletion of a project !", 
+        "options": [
+            {
+                "name": "id_projet", 
+                "description": "Identifiant du projet à supprimer", 
+                "required": true, 
+                "type": "STRING"
+            }
+        ]
+    },
+    { 
+        "name": "list", 
+        "type": "SUB_COMMAND", 
+        "description": "List all the projects !"
+    },
+    { 
+        "name": "see", 
+        "type": "SUB_COMMAND", 
+        "description": "See a project !", 
+        "options": [
+            {
+                "name": "project_id", 
+                "description": "Identifiant du projet à voir", 
+                "type": "STRING",
+                "required": true
+            }
+        ]
+    },
+    { 
+        "name": "edit", 
+        "type": "SUB_COMMAND_GROUP", 
+        "description": "Edition of a project !", 
+        "options": [
+            {
+                "name": "advancement", 
+                "type": "SUB_COMMAND", 
+                "description": "Edition of the advancement of the project", 
+                "options": [
+                    {
+                        "name": "id", 
+                        "type": "STRING",
+                        "description": "ID of the project to edit", 
+                        "required": true
+                    },
+                    {
+                        "name": "advancement", 
+                        "type": "STRING",
+                        "description": "The new advancement of the project", 
+                        "required": true
+                    }
+                ]
+            }, 
+            {
+                "name": "description", 
+                "type": "SUB_COMMAND", 
+                "description": "Edition of the description of the project", 
+                "options": [
+                    {
+                        "name": "id", 
+                        "type": "STRING",
+                        "description": "ID of the project to edit", 
+                        "required": true
+                    },
+                    {
+                        "name": "new_description", 
+                        "type": "STRING",
+                        "description": "The new description of the project", 
+                        "required": true
+                    }
+                ]
+            }, 
+            {
+                "name": "deadline", 
+                "type": "SUB_COMMAND", 
+                "description": "Edition of the deadline of the project",
+                "options": [
+                    {
+                        "name": "id", 
+                        "type": "STRING",
+                        "description": "ID of the project to edit", 
+                        "required": true
+                    },
+                    {
+                        "name": "new_deadline", 
+                        "type": "STRING",
+                        "description": "The new deadline of the project", 
+                        "required": true
+                    }
+                ]
+            }, 
+            {
+                "name": "image", 
+                "type": "SUB_COMMAND", 
+                "description": "Edition of the image of the project", 
+                "options": [
+                    {
+                        "name": "id", 
+                        "type": "STRING",
+                        "description": "ID of the project to edit", 
+                        "required": true
+                    },
+                    {
+                        "name": "new_image", 
+                        "type": "ATTACHMENT",
+                        "description": "The new image of the project", 
+                        "required": true
+                    }
+                ]
+            }, 
+            {
+                "name": "gh_repo", 
+                "type": "SUB_COMMAND", 
+                "description": "Edition of the repository GitHub of the project", 
+                "options": [
+                    {
+                        "name": "id", 
+                        "type": "STRING",
+                        "description": "ID of the project to edit", 
+                        "required": true
+                    },
+                    {
+                        "name": "new_repo", 
+                        "type": "STRING",
+                        "description": "The new repo of the project", 
+                        "required": true
+                    }
+                ]
+            }
+        ]
+    }
+]
