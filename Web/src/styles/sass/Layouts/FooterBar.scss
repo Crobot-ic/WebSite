@@ -38,5 +38,21 @@
                 }
             }
         }
+
+        &-icons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+        }
     }
 }   
+
+@media all and (max-width: 500px) {
+    .footer-bar {
+        &-row ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }   
+}

@@ -5,7 +5,7 @@ const FooterBar = () => {
     return (
         <footer className="footer">
             <div className="footer-bar">
-                <div className="footer-bar-row">
+                <div className="footer-bar-row footer-bar-icons">
                     <a href="https://goo.gl/maps/r7GSTLVWPkgUmgV38" target="_blank">
                         <i className="fa fa-map-marker" aria-hidden="true"></i>
                     </a>

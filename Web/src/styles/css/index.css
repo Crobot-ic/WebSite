@@ -230,6 +230,29 @@ body, #root {
   color: goldenrod;
 }
 
+@media all and (max-width: 750px) {
+  .header-bar {
+    padding: 10px 60px;
+  }
+}
+@media all and (max-width: 550px) {
+  .header-bar {
+    padding: 10px 0;
+    width: 90%;
+    margin: auto;
+  }
+}
+@media all and (max-width: 425px) {
+  .header-bar-logo-content {
+    width: 40px;
+  }
+  .header-bar-nav-ul {
+    gap: 10px;
+  }
+  .header-bar-nav-ul-choice {
+    font-size: 16px;
+  }
+}
 .footer {
   background: rgb(4, 4, 50);
   padding: 30px 0px;
@@ -264,7 +287,19 @@ body, #root {
   display: inline-block;
   margin: 0px 30px;
 }
+.footer-bar-icons {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+}
 
+@media all and (max-width: 500px) {
+  .footer-bar-row ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
 .main-page {
   height: 100vh;
   background-image: url("../../assets/ArrivalImage.png");

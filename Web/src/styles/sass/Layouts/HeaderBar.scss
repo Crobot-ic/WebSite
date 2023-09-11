@@ -53,3 +53,32 @@
         }
     }
 }
+
+@media all and (max-width: 750px) {
+    .header-bar {
+        padding: 10px 60px;
+    }
+}
+
+@media all and (max-width: 550px) {
+    .header-bar {
+        padding: 10px 0;
+        width: 90%;
+        margin: auto;
+    }
+}
+
+@media all and (max-width: 425px) {
+    .header-bar {
+        &-logo-content {
+            width: 40px;
+        }
+
+        &-nav-ul {
+            gap: 10px;
+        
+            &-choice {
+                font-size: 16px;
+            }
+        }
+    }}
