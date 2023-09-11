@@ -1,9 +1,10 @@
 import '../../styles/css/index.css';
+import { createPortal } from "react-dom";
 
 const Modal = (props) => {
     const { children, titleModal, nameButton, createAction, closeModal } = props;
 
-    return (
+    return createPortal(
         <section className="modal">
             <div className="modal-layout"></div>
 
@@ -31,7 +32,7 @@ const Modal = (props) => {
                     >{ nameButton }</button>
                 </div>
             </div>
-        </section>
+        </section>, document.body
     )
 }
 

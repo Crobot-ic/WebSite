@@ -2,6 +2,7 @@
 @import "../Utils/SectionTitle.scss";
 
 .contact-us {
+    overflow: hidden;
     padding-bottom: 75px;
     padding-top: 40px;
     position: relative;
@@ -43,6 +44,7 @@
 
         .input-contact, button {
             width: 555px;
+            max-width: calc(50vw - 30px);
             outline: none;
             box-shadow: none;
             opacity: 0;
@@ -56,12 +58,12 @@
         }
 
         .input-contact:not(textarea), button {
-            transform: translate(25px);
+            transform: translateX(25px);
         }
 
         textarea {
             resize: none;
-            transform: translate(-25px);
+            transform: translateX(-25px);
         }
 
         button.little-size-button {
@@ -116,14 +118,8 @@
     }
 }
 
-@media all and (max-width: 1200px) {
-    .contact-us form .input-contact, .contact-us form button {
-        width: 455px;
-    }
-}
-
 @media all and (max-width: 990px) {
-    .contact-form {
+    .contact-us .contact-form {
         flex-direction: column-reverse;
         align-items: center;
         gap: 15px !important;
@@ -149,6 +145,34 @@
 
         textarea {
             height: 175px;
+            transform: translateX(25px);
+        }
+
+        &-visible {
+            .input-contact, button {
+                animation: apparitionTitle .2s ease forwards;
+            } 
+            
+            #name-contact-form {
+                animation-delay: 0s;
+            }
+
+            #email-contact-form {
+                animation-delay: 100ms;
+            }
+
+            #object-contact-form {
+                animation-delay: 200ms;
+            }
+
+            textarea.input-contact {
+                animation-duration: 200ms;
+                animation-delay: 300ms;
+            }   
+
+            .button-submit {
+                animation-delay: 400ms;
+            }
         }
     }
 }
