@@ -1,6 +1,10 @@
 import { Client, CommandInteraction } from "discord.js";
 import listProjects from "./Projects/ListProjects";
+import Edit from "./Projects/EditProject/Edit";
+import deleteProject from "./Projects/DeleteProject";
 import commandsOptions from "./Projects/ProjectOptionsCommand.json";
+import SeeProject from "./Projects/SeeProject";
+import createProject from "./Projects/CreateProjects";
 
 module.exports = {
     name: "project",
@@ -9,10 +13,10 @@ module.exports = {
     runSlash: (client: Client, interaction: CommandInteraction) => {
         const listCommands = {
             list: () => listProjects(client, interaction), 
-            create: () => listProjects(client, interaction),
-            delete: () => listProjects(client, interaction),
-            see: () => listProjects(client, interaction),
-            edit: () => listProjects(client, interaction),
+            create: () => createProject(client, interaction),
+            delete: () => deleteProject(client, interaction),
+            see: () => SeeProject(client, interaction),
+            edit: () => Edit(client, interaction),
         };
         
         // Get sub commands
