@@ -1,0 +1,152 @@
+[
+    {
+        "name": "all", 
+        "type": "SUB_COMMAND", 
+        "description": "All the event of the association"
+    },
+    {
+        "name": "create", 
+        "type": "SUB_COMMAND", 
+        "description": "Creation of an event", 
+        "options": [
+            { 
+                "name": "event_name", 
+                "description": "Nom de l'événement", 
+                "required": true, 
+                "type": "STRING"
+            },
+            { 
+                "name": "description", 
+                "description": "Description de l'événement", 
+                "required": true, 
+                "type": "STRING"
+            },
+            { 
+                "name": "event_date", 
+                "description": "Date du début de l'événement (mettre sous le format : DD/MM/YYYY HH:MM", 
+                "required": true, 
+                "type": "STRING"
+            },
+            { 
+                "name": "event_duration", 
+                "description": "Durée de l'événement (mettre sous le format : DD:HH:MM", 
+                "required": true, 
+                "type": "STRING"
+            },
+            {
+                "name": "place", 
+                "description": "Le lieu où l'événement se déroulera", 
+                "required": true, 
+                "type": "STRING", 
+                "autocomplete": true
+            }
+        ]
+    }, 
+    {
+        "name": "delete", 
+        "type": "SUB_COMMAND", 
+        "description": "Delete an event of the association", 
+        "options": [
+            {
+                "name": "id", 
+                "type": "INTEGER", 
+                "description": "The ID of the event to delete"
+            }
+        ]
+    }, 
+    {
+        "name": "incoming", 
+        "type": "SUB_COMMAND", 
+        "description": "All the future event of the association"
+    }, 
+    {   
+        "name": "see", 
+        "type": "SUB_COMMAND", 
+        "description": "See an event of the association", 
+        "options": [
+            {
+                "name": "id", 
+                "type": "INTEGER", 
+                "description": "The ID of the event to see"
+            }
+        ]
+    },
+    {
+        "name": "edit", 
+        "type": "SUB_COMMAND_GROUP", 
+        "description": "Edit an event of the association",
+        "options": [
+            {
+                "name": "place", 
+                "type": "SUB_COMMAND", 
+                "description": "Edit the place of the event", 
+                "options": [
+                    {
+                        "name": "event_id", 
+                        "type": "NUMBER", 
+                        "description": "The ID of the event to edit", 
+                        "required": true
+                    }, 
+                    {
+                        "name": "new_place", 
+                        "description": "The new place of the event", 
+                        "type": "STRING", 
+                        "required": true, 
+                        "autocomplete": true
+                    }
+                ]
+            },  
+            {   
+                "name": "start_date", 
+                "type": "SUB_COMMAND", 
+                "description": "Edit the date of the event", 
+                "options": [
+                    {
+                        "name": "id", 
+                        "type": "INTEGER", 
+                        "description": "The ID of the event to edit"   
+                    }, 
+                    {
+                        "name": "start_date", 
+                        "type": "STRING", 
+                        "description": "The new date of the event"      
+                    }
+                ]
+            }, 
+            {
+                "name": "duration",
+                "type": "SUB_COMMAND", 
+                "description": "Edit the duration of the event",
+                "options": [
+                    {
+                        "name": "id", 
+                        "type": "INTEGER", 
+                        "description": "The ID of the event to edit"
+                    }, 
+                    {
+                        "name": "duration", 
+                        "type": "INTEGER", 
+                        "description": "The new duration of the event"
+                    }
+                ]
+            }, 
+            {
+                "name": "description",
+                "type": "SUB_COMMAND", 
+                "description": "Edit the description of the event",
+                "options": [
+                    {
+                        "name": "id", 
+                        "type": "INTEGER", 
+                        "description": "The ID of the event to edit"
+                    }, 
+                    {
+                        "name": "description", 
+                        "type": "INTEGER", 
+                        "description": "The new description of the event"
+                    }
+                ]
+            }
+        ]
+    }
+]

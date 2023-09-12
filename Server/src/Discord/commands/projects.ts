@@ -1,6 +1,6 @@
 import { Client, CommandInteraction } from "discord.js";
 import listProjects from "./Projects/ListProjects";
-import Edit from "./Projects/EditProject/Edit";
+import Edit from "./Projects/Edit";
 import deleteProject from "./Projects/DeleteProject";
 import commandsOptions from "./Projects/ProjectOptionsCommand.json";
 import SeeProject from "./Projects/SeeProject";
