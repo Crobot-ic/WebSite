@@ -475,7 +475,14 @@ body, #root {
     font-weight: normal;
   }
 }
-
+@media all and (max-width: 900px) {
+  .main-page {
+   
+    background-image: url("../../assets/naoG.png");/* https://unsplash.com/fr/photos/yLcK3Itx6ok */
+    width: auto;
+  }
+ 
+}
 @media all and (max-width: 800px) {
   .main-page {
    
