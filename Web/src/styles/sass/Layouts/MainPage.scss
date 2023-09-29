@@ -2,8 +2,9 @@
 @import "../Utils/TitleApp.scss";
 
 .main-page {
-    height: 100vh;
-    background-image: url("../../assets/ArrivalImage.png");
+    
+    height: 110vh;
+    background-image: url("../../assets/ArrivalImage.png"); //https://fr.3dexport.com/3dmodel-robot-nao-306317.htm
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,9 +14,9 @@
         position: absolute;
         content: "";
         background-color: #222;
-        opacity: .6;
+        opacity: 10;
         bottom: 0;
-        top: 0;
+        top: 100;
         left: 0;
         right: 0;
     }
@@ -51,6 +52,7 @@
             }
         }
     }
+
 }
 
 @keyframes appScaleWidth {

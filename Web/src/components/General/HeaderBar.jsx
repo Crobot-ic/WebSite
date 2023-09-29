@@ -13,7 +13,9 @@ const HeaderBar = () => {
                         className="header-bar-logo-content"
                     />
                 </div>
-        
+                <div className="header-bar-name">
+                        <h1 className="header-bar-title">Crobot'ic</h1>
+                </div>
                 <nav className="header-bar-nav">
                     <ul className="header-bar-nav-ul">
                         <li className="header-bar-nav-ul-choice">
@@ -27,6 +29,10 @@ const HeaderBar = () => {
                         </li>
                     </ul>
                 </nav>
+                <div className="header-bar-row">
+                    <i className="fa fa-bars" aria-hidden="true"></i>
+                </div>
+                
             </div>
         </header>
     )
