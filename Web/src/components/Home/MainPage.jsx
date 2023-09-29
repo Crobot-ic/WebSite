@@ -13,7 +13,7 @@ const MainPage = () => {
                         className="main-page-info-title-content-logo"
                     />
                 </div>
-                <h3 className="main-page-info-slogan">L'association de robotique de l'école Efrei Paris</h3>
+                <h3 className="main-page-info-slogan">L'association <span className="main-page-info-slogan-line-break"> </span>de robotique de l'école Efrei Paris</h3>
             </div>
         </section>
     )

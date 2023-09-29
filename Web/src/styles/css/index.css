@@ -470,6 +470,9 @@ body, #root {
   animation: apparitionTitle 0.8s ease-in 0.5s forwards;
   padding-right: 50%;
 }
+.main-page-info-slogan-line-break{
+  display: none;
+}
 @media all and (max-width: 750px) {
   .main-page-info-slogan {
     font-weight: normal;
@@ -499,11 +502,14 @@ body, #root {
     z-index: 1000;
     color: goldenrod;
     font-variant-caps: petite-caps;
-    gap: 20px;
+    gap: 15px;
+  }
+  .main-page-info-slogan-line-break{
+    display: block;
   }
   .main-page-info-title-content {
   
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 500;
     letter-spacing: 7px;}
     .main-page-info-slogan{ font-size: 20px;}
@@ -511,6 +517,11 @@ body, #root {
       width: 10vh;
       margin-right: 50%;
     }
+    .main-page-info-slogan {
+  
+      font-size: 25px;
+      
+      }
 }
 
 @keyframes appScaleWidth {
@@ -607,6 +618,10 @@ body, #root {
     grid-template-columns: 1fr;
   }
 }
+@media all and (max-width: 425px) {
+  .activities{
+    display: none;
+  }}
 .modal {
   padding: 5px 0px 20px 0px !important;
   position: fixed;

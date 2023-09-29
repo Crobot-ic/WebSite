@@ -33,6 +33,7 @@ const HeaderBar = () => {
                     <i className="fa fa-bars" aria-hidden="true"></i>
                 </div>
                 
+                
             </div>
         </header>
     )
