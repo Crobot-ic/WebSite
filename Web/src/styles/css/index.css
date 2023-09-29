@@ -488,7 +488,7 @@ body, #root {
 }
 @media all and (max-width: 800px) {
   .main-page {
-   
+   opacity:1;
     background-image: url("../../assets/naoP.png");/* https://unsplash.com/fr/photos/yLcK3Itx6ok */
     width: auto;
   }
