@@ -7,9 +7,9 @@
 
     &-bar {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, auto);;
-        margin: 10px 100px ;
+        grid-template-columns: repeat(3, auto);
+        grid-template-rows: 3 auto;
+        margin: 15px 100px ;
         align-items: center;
         gap: 20%;
 
@@ -27,7 +27,7 @@
             font-variant-caps: petite-caps;
             letter-spacing: 7px;
         }
-        &-row i{
+        &-row button{
             display: none;
             text-decoration: none;
             color: goldenrod;
@@ -76,13 +76,62 @@
     }
 }
 
+.header-bar-nav-menu{
+  display: flex;
+  padding-left: 15px;
+  justify-content: center; 
+  align-items: center;
+  
+}
+.header-bar-nav-ul-menu{
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  list-style: none;
+  gap: 15px;
+  list-style-type: none;
+ 
+}
+.header-bar-nav-ul-choice-menu{
+  font-size: 15px;
+  font-variant-caps: small-caps;
+  position: relative;
+  color: goldenrod;
+}
+
+.header-bar-nav-ul-choice-menu::after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 1px;
+  background-color: goldenrod;
+  transform: scale(0);
+  width: 100%;
+  bottom: 0;
+  transition: transform 0.3s ease;
+}
+.header-bar-nav-ul-choice-menu:hover::after {
+  transform: scale(100%);
+}
+.header-bar-nav-ul-choice-menu a {
+  cursor: pointer;
+ 
+  color: goldenrod;
+}
+
+
+@media all and (min-width: 937px) {
+  .header-bar-nav-menu{
+    display: none;
+  }
+}
 @media all and (max-width: 936px) {
    
     .header-bar-nav {
       display: none;
   }
   
-    &-row i{
+    .header-bar-row button{
       display: block;
       text-align: right;
     }
@@ -90,14 +139,14 @@
   }
 @media all and (max-width: 750px) {
   .header-bar {
-    margin: 10px 50px ;
+    margin: 10px 40px ;
    
   }
-  &-nav {
+  .header-bar-nav {
     display: none;
-  }
+}
 
-  &-row i{
+  .header-bar-row button{
     display: block;
   }
   
@@ -117,7 +166,7 @@
     
     width: 50%;
    
-    margin: 5px 15px;
+    margin: 5px 0px 0 15px;
   }  
   .main-page {
     height: 100vh;
