@@ -2,8 +2,9 @@
 @import "../Utils/TitleApp.scss";
 
 .main-page {
-    height: 100vh;
-    background-image: url("../../assets/ArrivalImage.png");
+    
+    height: 110vh;
+    background-image: url("../../assets/nao.png"); //https://fr.3dexport.com/3dmodel-robot-nao-306317.htm
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,15 +14,19 @@
         position: absolute;
         content: "";
         background-color: #222;
-        opacity: .6;
+        opacity: 10;
         bottom: 0;
-        top: 0;
+        top: 100;
         left: 0;
         right: 0;
     }
 
     &-info {
         @include center-absol;
+        position: absolute;
+        top: 40%;
+        left: 45%;
+        transform: translate(-50%, -50%);
         text-align: center;
         z-index: 1000;
         color: goldenrod;
@@ -29,30 +34,115 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
-
+        
         &-title {
             @include titleApp;
-            &-content {
-                font-size: 35px;
+            &-content{
+              font-size: 500%;
                 font-weight: 500;
                 letter-spacing: 7px;
+                &-logo {
+                width: 20vh;
+                margin-right: 50%;
+                }
             }   
         }   
 
         &-slogan {
             width: 85vw;
-            font-size: 25px;
+            font-size: 300%;
             font-weight: 500;
             opacity: 0;
-            animation: apparitionTitle .8s ease-in .5s forwards;
-
-            @media all and (max-width: 750px) { 
-                font-weight: normal;
+            animation: apparitionTitle 0.8s ease-in 0.5s forwards;
+            padding-right: 50%;
+            &-line-break{
+                display: none;
+            
             }
+            
         }
     }
+    
+
+}
+@media all and (max-width: 1320px) {
+  .main-page-info-slogan {
+    font-size: 250%;
+  }
 }
 
+@media all and (max-width: 900px) {
+  .main-page {
+    background-image: url("../../assets/naoG.png"); /* https://unsplash.com/fr/photos/yLcK3Itx6ok */
+    width: auto;
+  }
+  .main-page-info-title-content {
+    font-size: 250%;
+  }
+  .main-page-info-slogan {
+    font-size: 200%;
+  }
+}
+@media all and (max-width: 890px) {
+  .main-page-info{
+    top: 30%;
+  }
+}
+
+@media all and (max-width: 820px) {
+  .main-page {
+    opacity: 1;
+    background-image: url("../../assets/naoP.png"); /* https://unsplash.com/fr/photos/yLcK3Itx6ok */
+    width: auto;
+  }
+  .main-page-info {
+    position: flex;
+    top: 25%;
+  
+    gap: 15px;
+  }
+  .main-page-info-slogan-line-break {
+    display: block;
+  }
+  .main-page-info-title-content {
+    font-size: 250%;
+    font-weight: 500;
+    letter-spacing: 7px;
+  }
+  .main-page-info-title-content-logo {
+    width: 10vh;
+    margin-right: 50%;
+  }
+  .main-page-info-slogan {
+    font-size: 200%;
+  }
+}
+
+@media all and (max-width: 750px) {
+  .main-page-info-slogan {
+    font-weight: normal;
+  }
+}
+@media all and (max-width: 430px) {
+  .main-page-info {
+    position: flex;
+    top: 25%;
+  
+    gap: 15px;
+  }
+  .main-page-info-title-content {
+    font-size: 250%;
+    font-weight: 500;
+    letter-spacing: 7px;
+  }
+  .main-page-info-title-content-logo {
+    width: 10vh;
+    margin-right: 50%;
+  }
+  .main-page-info-slogan {
+    font-size: 130%;
+  }
+}
 @keyframes appScaleWidth {
     to {
         width: 100px;

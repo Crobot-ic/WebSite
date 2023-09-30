@@ -21,6 +21,8 @@ const FooterBar = () => {
                     <a href="https://github.com/Crobot-ic" target="_blank">
                         <i className="fa fa-github" aria-hidden="true"></i>
                     </a>
+                    
+                    
                 </div>
 
                 <div className="footer-bar-row">
