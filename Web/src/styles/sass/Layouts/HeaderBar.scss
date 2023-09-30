@@ -7,7 +7,7 @@
 
     &-bar {
         display: grid;
-        grid-template-columns: repeat(3, auto);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 3 auto;
         margin: 15px 100px ;
         align-items: center;
@@ -22,17 +22,23 @@
             grid-column: 1;
             grid-row: 1;
             display: flex;
-            
+            justify-content: center; 
+            align-items: center;
             color: goldenrod;
             font-variant-caps: petite-caps;
             letter-spacing: 7px;
         }
         &-row button{
+        
             display: none;
             text-decoration: none;
             color: goldenrod;
             transition: 0.5s;
             font-size: 30px;
+            background: none;
+            cursor: pointer;
+            border: none;
+      
         }
         &-nav {
             &-ul {
@@ -42,7 +48,8 @@
                 list-style: none;
                 gap: 20px;
                 list-style-type: none;
-                
+                justify-content: center; 
+                align-items: center;
                 &-choice {
                     font-size: 17px;
                     font-variant-caps: small-caps;

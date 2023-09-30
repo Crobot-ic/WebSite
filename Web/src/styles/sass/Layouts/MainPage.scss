@@ -24,8 +24,8 @@
     &-info {
         @include center-absol;
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 40%;
+        left: 45%;
         transform: translate(-50%, -50%);
         text-align: center;
         z-index: 1000;
@@ -37,10 +37,8 @@
         
         &-title {
             @include titleApp;
-            
-            overflow: hidden;
             &-content{
-                font-size: 35px;
+              font-size: 500%;
                 font-weight: 500;
                 letter-spacing: 7px;
                 &-logo {
@@ -52,7 +50,7 @@
 
         &-slogan {
             width: 85vw;
-            font-size: 25px;
+            font-size: 300%;
             font-weight: 500;
             opacity: 0;
             animation: apparitionTitle 0.8s ease-in 0.5s forwards;
@@ -67,58 +65,84 @@
     
 
 }
+@media all and (max-width: 1320px) {
+  .main-page-info-slogan {
+    font-size: 250%;
+  }
+}
+
+@media all and (max-width: 900px) {
+  .main-page {
+    background-image: url("../../assets/naoG.png"); /* https://unsplash.com/fr/photos/yLcK3Itx6ok */
+    width: auto;
+  }
+  .main-page-info-title-content {
+    font-size: 250%;
+  }
+  .main-page-info-slogan {
+    font-size: 200%;
+  }
+}
+@media all and (max-width: 890px) {
+  .main-page-info{
+    top: 30%;
+  }
+}
+
+@media all and (max-width: 820px) {
+  .main-page {
+    opacity: 1;
+    background-image: url("../../assets/naoP.png"); /* https://unsplash.com/fr/photos/yLcK3Itx6ok */
+    width: auto;
+  }
+  .main-page-info {
+    position: flex;
+    top: 25%;
+  
+    gap: 15px;
+  }
+  .main-page-info-slogan-line-break {
+    display: block;
+  }
+  .main-page-info-title-content {
+    font-size: 250%;
+    font-weight: 500;
+    letter-spacing: 7px;
+  }
+  .main-page-info-title-content-logo {
+    width: 10vh;
+    margin-right: 50%;
+  }
+  .main-page-info-slogan {
+    font-size: 200%;
+  }
+}
 
 @media all and (max-width: 750px) {
-    .main-page-info-slogan {
-      font-weight: normal;
-    }
+  .main-page-info-slogan {
+    font-weight: normal;
   }
-  @media all and (max-width: 900px) {
-    .main-page {
-     
-      background-image: url("../../assets/naoG.png");/* https://unsplash.com/fr/photos/yLcK3Itx6ok */
-      width: auto;
-    }
-   
+}
+@media all and (max-width: 430px) {
+  .main-page-info {
+    position: flex;
+    top: 25%;
+  
+    gap: 15px;
   }
-  @media all and (max-width: 820px) {
-    .main-page {
-     opacity:1;
-      background-image: url("../../assets/naoP.png");/* https://unsplash.com/fr/photos/yLcK3Itx6ok */
-      width: auto;
-    }
-   
-    .main-page-info {
-      position: flex;
-      top: 30%;
-      left: 45%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 1000;
-      color: goldenrod;
-      font-variant-caps: petite-caps;
-      gap: 15px;
-    }
-    .main-page-info-slogan-line-break{
-      display: block;
-    }
-    .main-page-info-title-content {
-    
-      font-size: 200%;
-      font-weight: 500;
-      letter-spacing: 7px;}
-     
-      .main-page-info-title-content-logo {
-        width: 10vh;
-        margin-right: 50%;
-      }
-      .main-page-info-slogan {
-    
-        font-size: 125%;
-        
-        }
+  .main-page-info-title-content {
+    font-size: 250%;
+    font-weight: 500;
+    letter-spacing: 7px;
   }
-
+  .main-page-info-title-content-logo {
+    width: 10vh;
+    margin-right: 50%;
+  }
+  .main-page-info-slogan {
+    font-size: 130%;
+  }
+}
 @keyframes appScaleWidth {
     to {
         width: 100px;
